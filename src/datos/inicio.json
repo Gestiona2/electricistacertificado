@@ -1,0 +1,65 @@
+{
+  "_comentario": "Todo el contenido de la página de inicio. Una entrada por sección, en el orden en que aparecen. Los textos se editan aquí; el diseño no se toca.",
+
+  "meta": {
+    "titulo": "Electricista certificado en Bogotá | Atención profesional",
+    "descripcion": "Electricista profesional y certificado en Bogotá. Estamos preparando nuestro sitio para compartir servicios y canales de atención."
+  },
+
+  "portada": {
+    "encabezado": "Electricista profesional · Bogotá",
+    "titulo": "Muy pronto",
+    "tituloAcento": "en Bogotá",
+    "texto": "Muy pronto encontrarás aquí información sobre servicios eléctricos profesionales y certificados en Bogotá.",
+    "botones": [
+      { "texto": "Sitio en construcción", "href": "#estado", "estilo": "btn-accent" },
+      { "texto": "Volver al inicio", "href": "#inicio", "estilo": "btn-ghost" }
+    ],
+    "imagen": "/electricidad-bogota.svg",
+    "imagenAlt": "Ilustración gráfica de un rayo eléctrico sobre fondo azul oscuro"
+  },
+
+  "servicios": {
+    "encabezado": "Próximamente",
+    "titulo": "Servicios eléctricos en Bogotá",
+    "texto": "Estamos organizando la información para que pronto conozcas nuestros servicios y puedas solicitar atención.",
+    "_limite": "De 3 a 6. Con más, la grilla se ve apretada en pantallas medianas.",
+    "items": []
+  },
+
+  "nosotros": {
+    "encabezado": "Atención en Bogotá",
+    "titulo": "Un profesional certificado, a tu servicio",
+    "texto": "Esta página está en construcción. Pronto publicaremos más información sobre el profesional, su certificación y las soluciones eléctricas disponibles en Bogotá.",
+    "imagen": "/electricidad-bogota.svg",
+    "imagenAlt": "Ilustración de un rayo, símbolo de los servicios eléctricos"
+  },
+
+  "cifras": {
+    "_limite": "Exactamente 4. Con 3 o 5 la fila queda descompensada. Solo números enteros: se animan contando desde cero.",
+    "_advertencia": "Solo cifras reales y verificables. Nunca inventarlas.",
+    "items": []
+  },
+
+  "testimonios": {
+    "encabezado": "Testimonios",
+    "titulo": "Título de la sección",
+    "_limite": "De 3 a 6. La frase no debe pasar de 180 caracteres o desborda en celular.",
+    "_advertencia": "Nunca inventar testimonios. Si no hay reales, quitar la sección.",
+    "items": []
+  },
+
+  "faq": {
+    "encabezado": "En preparación",
+    "titulo": "Muy pronto compartiremos más",
+    "_limite": "De 6 a 10 preguntas.",
+    "items": []
+  },
+
+  "contacto": {
+    "encabezado": "Sitio en construcción",
+    "titulo": "Estamos trabajando para atenderte pronto",
+    "texto": "Vuelve pronto para conocer los servicios y encontrar la forma de contacto.",
+    "_nota": "Los datos de contacto (WhatsApp, correo, dirección) salen de sitio.json, no se repiten aquí."
+  }
+}

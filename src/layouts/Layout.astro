@@ -1,0 +1,30 @@
+---
+import "../styles/global.css";
+interface Props { titulo: string; descripcion: string; activa?: string }
+const { titulo, descripcion } = Astro.props;
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101820" />
+    <meta name="description" content={descripcion} />
+    <meta property="og:title" content={titulo} />
+    <meta property="og:description" content={descripcion} />
+    <title>{titulo}</title>
+  </head>
+  <body>
+    <slot />
+    <footer class="site-footer"><span>Electricistas Certificados Bogotá</span><span>Bogotá, Colombia · © {new Date().getFullYear()}</span></footer>
+  </body>
+</html>
+<style>
+  :global(*) { box-sizing: border-box; }
+  :global(html) { scroll-behavior: smooth; }
+  :global(body) { margin: 0; font-family: Inter, Arial, sans-serif; background: #101820; }
+  :global(a) { color: inherit; text-decoration: none; }
+  :global(img) { display: block; max-width: 100%; }
+  :global(.site-footer) { display: flex; justify-content: space-between; gap: 18px; padding: 22px max(7vw, 24px); background: #0a1117; color: #abb4b7; font-size: .74rem; }
+  @media(max-width: 560px) { :global(.site-footer) { flex-direction: column; } }
+</style>

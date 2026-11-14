@@ -1,0 +1,30 @@
+{
+  "_comentario": "Datos que se repiten en todas las páginas: menú, pie, contacto. El contenido de cada página va en su propio archivo (inicio.json, servicios.json...).",
+
+  "nombre": "Electricistas Certificados Bogotá",
+  "razonSocial": "Electricistas Certificados Bogotá",
+  "nit": "",
+  "descripcion": "Electricista profesional y certificado en Bogotá. Estamos preparando nuestro sitio para compartir servicios y canales de atención.",
+
+  "whatsapp": "",
+  "correo": "",
+  "correoLegal": "",
+  "direccion": "Bogotá, Colombia",
+  "horario": "",
+
+  "claveTema": "NOMBRE-NEGOCIO-tema",
+
+  "menu": [],
+
+  "ctaPrincipal": {
+    "texto": "En construcción",
+    "href": "#estado"
+  },
+
+  "redes": [
+    { "nombre": "Facebook", "icono": "facebook", "href": "" },
+    { "nombre": "Instagram", "icono": "instagram", "href": "" }
+  ],
+
+  "legales": []
+}

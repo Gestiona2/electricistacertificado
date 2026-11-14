@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 960" role="img" aria-labelledby="title desc">
+  <title id="title">Electricidad segura en Bogotá</title><desc id="desc">Ilustración de un gran rayo amarillo sobre fondo azul oscuro y trazos técnicos.</desc>
+  <rect width="800" height="960" fill="#1b292e"/>
+  <path d="M0 120h800M0 240h800M0 360h800M0 480h800M0 600h800M0 720h800M0 840h800M100 0v960M220 0v960M340 0v960M460 0v960M580 0v960M700 0v960" stroke="#ffffff" stroke-opacity=".045" stroke-width="2"/>
+  <circle cx="400" cy="430" r="260" fill="none" stroke="#f3b735" stroke-opacity=".14" stroke-width="2"/>
+  <circle cx="400" cy="430" r="205" fill="none" stroke="#f3b735" stroke-opacity=".24" stroke-width="2" stroke-dasharray="3 12"/>
+  <path d="M452 120 256 477h137l-48 365 204-432H410z" fill="#f3b735"/>
+  <path d="M114 768h190M498 196h168M560 720h120" stroke="#f3b735" stroke-opacity=".65" stroke-width="3"/>
+  <circle cx="114" cy="768" r="6" fill="#f3b735"/><circle cx="666" cy="196" r="6" fill="#f3b735"/><circle cx="680" cy="720" r="6" fill="#f3b735"/>
+</svg>

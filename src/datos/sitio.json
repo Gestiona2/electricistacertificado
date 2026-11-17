@@ -1,30 +1,30 @@
 {
-  "_comentario": "Datos que se repiten en todas las páginas: menú, pie, contacto. El contenido de cada página va en su propio archivo (inicio.json, servicios.json...).",
-
-  "nombre": "Electricistas Certificados Bogotá",
-  "razonSocial": "Electricistas Certificados Bogotá",
+  "_comentario": "Datos que se repiten en todas las páginas. Editar aquí los datos de contacto y la navegación.",
+  "nombre": "Jhon Jairo Espinosa",
+  "razonSocial": "Jhon Jairo Espinosa · Electricista certificado",
   "nit": "",
-  "descripcion": "Electricista profesional y certificado en Bogotá. Estamos preparando nuestro sitio para compartir servicios y canales de atención.",
-
-  "whatsapp": "",
+  "descripcion": "Consulta servicios eléctricos en Bogotá: instalaciones, reparaciones, mantenimiento y montaje de soportes para TV. Contacta a Jhon Jairo Espinosa por WhatsApp.",
+  "whatsapp": "573112958692",
+  "whatsappMensaje": "Hola, vi su página web y necesito información sobre sus servicios eléctricos. ¿Podría ayudarme?",
   "correo": "",
   "correoLegal": "",
   "direccion": "Bogotá, Colombia",
   "horario": "",
-
-  "claveTema": "NOMBRE-NEGOCIO-tema",
-
-  "menu": [],
-
-  "ctaPrincipal": {
-    "texto": "En construcción",
-    "href": "#estado"
-  },
-
-  "redes": [
-    { "nombre": "Facebook", "icono": "facebook", "href": "" },
-    { "nombre": "Instagram", "icono": "instagram", "href": "" }
+  "claveTema": "jhon-jairo-espinosa-tema",
+  "menu": [
+    { "id": "servicios", "texto": "Servicios", "href": "#servicios" },
+    { "id": "proceso", "texto": "Cómo trabajamos", "href": "#proceso" },
+    { "id": "trabajos", "texto": "Trabajos", "href": "#trabajos" },
+    { "id": "nosotros", "texto": "Sobre mí", "href": "#nosotros" },
+    { "id": "faq", "texto": "Preguntas", "href": "#faq" }
   ],
-
+  "ctaPrincipal": { "texto": "Consultar por WhatsApp", "href": "https://wa.me/573112958692" },
+  "creditos": {
+    "_nota": "Línea del pie: quién hizo el sitio. Con url vacía sale sin enlace.",
+    "texto": "Sitio web desarrollado por",
+    "nombre": "emp2web",
+    "url": "https://emp2web.com"
+  },
+  "redes": [],
   "legales": []
 }

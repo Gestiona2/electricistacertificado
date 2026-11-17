@@ -1,63 +1,172 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import datos from "../datos/inicio.json";
-const { portada, servicios, nosotros, contacto, meta } = datos;
+import sitio from "../datos/sitio.json";
+import { ruta } from "../lib/ruta";
+
+const {
+  meta,
+  portada,
+  confianza,
+  servicios,
+  proceso,
+  nosotros,
+  trabajos,
+  faq,
+  contacto,
+  pie,
+} = datos;
+
+const whatsappUrl = `https://wa.me/${sitio.whatsapp}?text=${encodeURIComponent(sitio.whatsappMensaje)}`;
 ---
 
-<Layout titulo={meta.titulo} descripcion={meta.descripcion} activa="inicio">
-  <main id="inicio">
-    <section class="hero" aria-labelledby="hero-title">
+<Layout titulo={meta.titulo} descripcion={meta.descripcion}>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container hero-grid">
       <div class="hero-copy">
-        <p class="location"><span aria-hidden="true">●</span> {portada.encabezado}</p>
-        <h1 id="hero-title">{portada.titulo}<br /><span>{portada.tituloAcento}</span></h1>
-        <p class="intro">{portada.texto}</p>
-        <a class="button" href="#estado">{portada.botones[0].texto}<span aria-hidden="true">↘</span></a>
+        <p class="eyebrow"><span aria-hidden="true"></span>{portada.encabezado}</p>
+        <h1 id="hero-title">{portada.titulo}<span>{portada.tituloAcento}</span></h1>
+        <p class="hero-description">{portada.texto}</p>
+        <div class="hero-actions">
+          <a class="btn btn-accent" href={ruta(portada.botones[0].href)} target="_blank" rel="noopener">{portada.botones[0].texto}</a>
+          <a class="btn btn-ghost" href={ruta(portada.botones[1].href)}>{portada.botones[1].texto}</a>
+        </div>
+        <div class="hero-proof">
+          <div class="proof-icon" aria-hidden="true">✓</div>
+          <div>
+            <strong>{portada.sello}</strong>
+            <span>Instalaciones, reparaciones y mantenimiento</span>
+          </div>
+        </div>
       </div>
-      <div class="hero-art" role="img" aria-label={portada.imagenAlt}>
-        <img src={portada.imagen} alt="" fetchpriority="high" />
-        <div class="art-caption"><span>BOGOTÁ D.C.</span><strong>ENERGÍA SEGURA<br />EMPIEZA AQUÍ</strong></div>
+
+      <div class="hero-media">
+        <div class="hero-frame">
+          <img src={ruta(portada.imagen)} alt={portada.imagenAlt} fetchpriority="high" width="1200" height="1797" />
+          <div class="hero-stamp"><span>JHON JAIRO</span><strong>ESPINOSA</strong><small>Electricista certificado</small></div>
+        </div>
+        <p class="image-credit">{portada.nota}</p>
       </div>
-      <div class="hero-foot"><span>Electricidad residencial y comercial</span><span>Volvemos pronto <b>↓</b></span></div>
-    </section>
+    </div>
+  </section>
 
-    <section class="services" id="servicios">
-      <div class="section-label">{servicios.encabezado}</div>
-      <div class="services-copy"><h2>{servicios.titulo}</h2><p>{servicios.texto}</p></div>
-      <div class="services-mark" aria-hidden="true">⚡</div>
-    </section>
+  <section class="confidence" aria-labelledby="confidence-title">
+    <div class="container">
+      <h2 id="confidence-title" class="sr-only">{confianza.titulo}</h2>
+      <div class="confidence-grid">
+        {confianza.items.map((item, index) => (
+          <div class="confidence-item">
+            <span class="confidence-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+            <div><h3>{item.titulo}</h3><p>{item.texto}</p></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
-    <section class="coming" id="estado">
-      <div class="coming-number" aria-hidden="true">01</div>
-      <div><p class="section-label">{contacto.encabezado}</p><h2>{contacto.titulo}</h2><p>{nosotros.texto}</p></div>
-    </section>
-  </main>
+  <section class="section services" id="servicios" aria-labelledby="services-title">
+    <div class="container">
+      <header class="section-heading">
+        <p class="eyebrow"><span aria-hidden="true"></span>{servicios.encabezado}</p>
+        <h2 id="services-title">{servicios.titulo}</h2>
+        <p>{servicios.texto}</p>
+      </header>
+      <div class="services-grid">
+        {servicios.items.map((item) => (
+          <article class="service-card">
+            <div class="service-image"><img src={ruta(item.imagen)} alt={item.titulo + " en Bogotá"} loading="lazy" width="720" height="540" /></div>
+            <div class="service-body">
+              <div class="service-title-row"><h3>{item.titulo}</h3><span class="service-icon" aria-hidden="true">{item.icono === "zap" ? "ϟ" : item.icono === "wrench" ? "⌁" : item.icono === "shield" ? "◈" : item.icono === "lightbulb" ? "✦" : item.icono === "plug" ? "⊕" : item.icono === "tv" ? "□" : "∿"}</span></div>
+              <p>{item.texto}</p>
+              <small>{item.detalle}</small>
+              <a class="service-link" href={whatsappUrl} target="_blank" rel="noopener">Consultar este servicio <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="process" id="proceso" aria-labelledby="process-title">
+    <div class="container process-grid">
+      <header class="process-heading">
+        <p class="eyebrow eyebrow-light"><span aria-hidden="true"></span>{proceso.encabezado}</p>
+        <h2 id="process-title">{proceso.titulo}</h2>
+        <p>{proceso.texto}</p>
+        <a class="btn btn-accent" href={whatsappUrl} target="_blank" rel="noopener">Escribir por WhatsApp</a>
+      </header>
+      <ol class="process-steps">
+        {proceso.pasos.map((paso) => (
+          <li><span>{paso.numero}</span><div><h3>{paso.titulo}</h3><p>{paso.texto}</p></div></li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section about" id="nosotros" aria-labelledby="about-title">
+    <div class="container about-grid">
+      <div class="about-image">
+        <img src={ruta(nosotros.imagen)} alt={nosotros.imagenAlt} loading="lazy" width="900" height="900" />
+        <div class="about-badge"><span>◉</span>{nosotros.firma}</div>
+      </div>
+      <div class="about-copy">
+        <p class="eyebrow"><span aria-hidden="true"></span>{nosotros.encabezado}</p>
+        <h2 id="about-title">{nosotros.titulo}</h2>
+        <p class="about-lead">{nosotros.texto}</p>
+        <p>{nosotros.textoSecundario}</p>
+        <a class="btn btn-primary" href={ruta(nosotros.boton.href)} target="_blank" rel="noopener">{nosotros.boton.texto}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section work" id="trabajos" aria-labelledby="work-title">
+    <div class="container">
+      <header class="section-heading section-heading-split">
+        <div>
+          <p class="eyebrow"><span aria-hidden="true"></span>{trabajos.encabezado}</p>
+          <h2 id="work-title">{trabajos.titulo}</h2>
+        </div>
+        <div><p>{trabajos.texto}</p><a class="text-link" href={ruta(trabajos.boton.href)} target="_blank" rel="noopener">{trabajos.boton.texto} <span aria-hidden="true">↗</span></a></div>
+      </header>
+      <div class="work-grid">
+        {trabajos.items.map((item, index) => (
+          <figure class={index === 0 ? "work-item work-item-wide" : "work-item"}>
+            <img src={ruta(item.imagen)} alt={item.alt} loading="lazy" width="1200" height="900" />
+            <figcaption>{item.titulo}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq" id="faq" aria-labelledby="faq-title">
+    <div class="container faq-grid">
+      <header>
+        <p class="eyebrow"><span aria-hidden="true"></span>{faq.encabezado}</p>
+        <h2 id="faq-title">{faq.titulo}</h2>
+        <p class="faq-note">{faq._nota}</p>
+      </header>
+      <div class="faq-list">
+        {faq.items.map((item) => (
+          <details><summary>{item.pregunta}<span aria-hidden="true">+</span></summary><p>{item.respuesta}</p></details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contacto" aria-labelledby="contact-title">
+    <div class="container contact-inner">
+      <div class="contact-mark" aria-hidden="true">ϟ</div>
+      <div>
+        <p class="eyebrow eyebrow-light"><span aria-hidden="true"></span>{contacto.encabezado}</p>
+        <h2 id="contact-title">{contacto.titulo}</h2>
+        <p>{contacto.texto}</p>
+      </div>
+      <div class="contact-actions">
+        <a class="btn btn-accent" href={ruta(contacto.boton.href)} target="_blank" rel="noopener">{contacto.boton.texto}</a>
+        <strong>{contacto.telefono}</strong>
+        <span>{contacto.zona}</span>
+      </div>
+    </div>
+  </section>
 </Layout>
-
-<style>
-  main { color: #f6f4ed; background: #101820; }
-  .hero { min-height: min(790px, calc(100svh - 76px)); padding: 88px max(7vw, 24px) 24px; position: relative; display: grid; grid-template-columns: 1fr .78fr; align-items: center; gap: 5vw; overflow: hidden; }
-  .hero-copy { position: relative; z-index: 1; max-width: 680px; padding-bottom: 54px; }
-  .location, .section-label { color: #f3b735; font-size: .78rem; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
-  .location span { font-size: .6rem; margin-right: 10px; }
-  h1 { margin: 30px 0 24px; font-size: clamp(3.3rem, 7.2vw, 7.6rem); line-height: .94; letter-spacing: -.065em; font-weight: 780; }
-  h1 span { color: #f3b735; }
-  .intro { max-width: 450px; color: #c0c7c9; font-size: clamp(1rem, 1.5vw, 1.18rem); line-height: 1.65; }
-  .button { display: inline-flex; align-items: center; gap: 28px; padding: 15px 19px; margin-top: 32px; background: #f3b735; color: #101820; font-weight: 750; }
-  .button span { font-size: 1.2rem; }
-  .hero-art { width: min(100%, 480px); aspect-ratio: .83; justify-self: center; position: relative; background: #18252a; }
-  .hero-art img { width: 100%; height: 100%; object-fit: cover; }
-  .art-caption { position: absolute; left: 20px; right: 20px; bottom: 22px; display: flex; align-items: end; justify-content: space-between; color: #fff; }
-  .art-caption span { font-size: .7rem; letter-spacing: .12em; }
-  .art-caption strong { font-size: .88rem; line-height: 1.3; text-align: right; }
-  .hero-foot { position: absolute; bottom: 24px; left: max(7vw, 24px); right: max(7vw, 24px); display: flex; justify-content: space-between; color: #9ba5a9; font-size: .76rem; }
-  .hero-foot b { color: #f3b735; margin-left: 8px; }
-  .services { display: grid; grid-template-columns: .6fr 1.5fr .45fr; align-items: center; gap: 28px; padding: 90px max(7vw, 24px); background: #f1eee4; color: #101820; }
-  .services-copy h2, .coming h2 { margin: 0 0 16px; max-width: 680px; font-size: clamp(2rem, 4vw, 4rem); line-height: 1.03; letter-spacing: -.05em; }
-  .services-copy p, .coming p:not(.section-label) { max-width: 590px; margin: 0; color: #596267; line-height: 1.7; }
-  .services-mark { color: #f3b735; font-size: clamp(6rem, 14vw, 12rem); line-height: 1; text-align: right; }
-  .coming { padding: 90px max(7vw, 24px) 110px; display: grid; grid-template-columns: .6fr 2fr; gap: 28px; }
-  .coming h2 { margin-top: 18px; }
-  .coming-number { color: #f3b735; font-size: 1.1rem; font-weight: 700; }
-  @media (max-width: 760px) { .hero { min-height: auto; padding-top: 64px; grid-template-columns: 1fr; gap: 36px; } .hero-copy { padding-bottom: 0; } h1 { font-size: clamp(3.1rem, 13vw, 5.6rem); } .hero-art { width: 100%; max-width: 520px; aspect-ratio: 1.05; } .hero-foot { position: static; grid-column: 1; margin-top: 0; gap: 12px; font-size: .68rem; } .services { grid-template-columns: 1fr auto; padding-top: 68px; padding-bottom: 68px; } .section-label { grid-column: 1 / -1; } .services-mark { font-size: 5rem; } .coming { grid-template-columns: 1fr; gap: 20px; padding-top: 68px; padding-bottom: 76px; } }
-  @media (prefers-reduced-motion: no-preference) { .hero-copy > * { animation: enter .65s both; } .hero-copy h1 { animation-delay: .08s; } .intro { animation-delay: .16s; } .button { animation-delay: .22s; } @keyframes enter { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } } }
-</style>

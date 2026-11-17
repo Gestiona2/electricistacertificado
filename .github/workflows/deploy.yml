@@ -1,4 +1,11 @@
-name: Deploy Astro site to GitHub Pages
+# Publica el sitio en GitHub Pages.
+#
+# El mismo código vive en dos repositorios:
+#   - espinosaceballosjhonjairo-eng/pagina-web → electricistascertificadosbogota.com (raíz)
+#   - Gestiona2/electricistacertificado       → demos.emp2web.com/electricistacertificado/
+#
+# El destino se decide solo, comparando el repositorio donde corre el flujo.
+name: Publicar
 
 on:
   push:
@@ -20,19 +27,32 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
+
       - name: Install dependencies
         run: npm ci
+
       - name: Build
+        env:
+          # demo → subcarpeta de demos.emp2web.com; cliente → dominio propio en la raíz
+          PUBLIC_SITE: ${{ github.repository == 'Gestiona2/electricistacertificado' && 'https://demos.emp2web.com' || 'https://electricistascertificadosbogota.com' }}
+          PUBLIC_BASE: ${{ github.repository == 'Gestiona2/electricistacertificado' && '/electricistacertificado' || '/' }}
         run: npm run build
+
+      - name: Quitar el CNAME del cliente en la demo
+        if: github.repository == 'Gestiona2/electricistacertificado'
+        run: rm -f dist/CNAME
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
+
   deploy:
     environment:
       name: github-pages

@@ -1,30 +1,126 @@
 ---
 import "../styles/global.css";
-interface Props { titulo: string; descripcion: string; activa?: string }
-const { titulo, descripcion } = Astro.props;
+import sitio from "../datos/sitio.json";
+import { ruta } from "../lib/ruta";
+
+interface Props {
+  titulo: string;
+  descripcion?: string;
+  activa?: string;
+}
+const { titulo, descripcion = sitio.descripcion } = Astro.props;
+const whatsappUrl = `https://wa.me/${sitio.whatsapp}?text=${encodeURIComponent(sitio.whatsappMensaje)}`;
 ---
+
 <!doctype html>
 <html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#101820" />
+    <meta name="theme-color" content="#082B52" />
+    <title>{titulo}</title>
     <meta name="description" content={descripcion} />
     <meta property="og:title" content={titulo} />
     <meta property="og:description" content={descripcion} />
-    <title>{titulo}</title>
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_CO" />
+    <link rel="icon" href={ruta("/brand/favicon.png")} type="image/png" />
   </head>
   <body>
-    <slot />
-    <footer class="site-footer"><span>Electricistas Certificados Bogotá</span><span>Bogotá, Colombia · © {new Date().getFullYear()}</span></footer>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <span class="topbar-location"><span aria-hidden="true">◉</span> Atención en Bogotá · Electricista certificado</span>
+        <a class="topbar-phone" href={whatsappUrl} target="_blank" rel="noopener">+57 311 295 8692</a>
+      </div>
+    </header>
+
+    <header class="site-header" id="siteHeader">
+      <div class="container header-inner">
+        <a class="brand" href={ruta("/")} aria-label="Ir al inicio">
+          <img class="brand-mark" src={ruta("/brand/isologo.png")} alt="" width="44" height="44" />
+          <span class="brand-text">
+            <strong>{sitio.nombre}</strong>
+            <small>Electricista certificado</small>
+          </span>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="siteMenu">
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav class="site-menu" id="siteMenu" aria-label="Menú principal">
+          {sitio.menu.map((item) => <a href={ruta(item.href)}>{item.texto}</a>)}
+        </nav>
+
+        <a class="header-cta" href={whatsappUrl} target="_blank" rel="noopener">
+          <span aria-hidden="true">✆</span> {sitio.ctaPrincipal.texto}
+        </a>
+      </div>
+    </header>
+
+    <main id="contenido">
+      <slot />
+    </main>
+
+    <a class="floating-whatsapp" href={whatsappUrl} target="_blank" rel="noopener" aria-label="Escribir por WhatsApp a Jhon Jairo Espinosa">
+      <span aria-hidden="true">✆</span>
+    </a>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="footer-brand" href={ruta("/")} aria-label="Jhon Jairo Espinosa, electricista certificado">
+            <img src={ruta("/brand/isologo.png")} alt="" width="58" height="58" class="footer-mark" loading="lazy" />
+            <span class="footer-brand-text">
+              <strong>{sitio.nombre}</strong>
+              <small>Electricista certificado</small>
+            </span>
+          </a>
+          <p>Soluciones eléctricas con profesionalismo y confianza.</p>
+        </div>
+        <div>
+          <h2>Contacto</h2>
+          <a href={whatsappUrl} target="_blank" rel="noopener">WhatsApp: +57 311 295 8692</a>
+          <span>Bogotá, Colombia</span>
+        </div>
+        <div>
+          <h2>Navegación</h2>
+          {sitio.menu.map((item) => <a href={ruta(item.href)}>{item.texto}</a>)}
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <span>© {new Date().getFullYear()} {sitio.razonSocial}. Todos los derechos reservados.</span>
+        <span>Electricista certificado · Bogotá</span>
+        {sitio.creditos && (
+          <span class="footer-credit">
+            {sitio.creditos.texto}{" "}
+            {sitio.creditos.url
+              ? <a href={sitio.creditos.url} target="_blank" rel="noopener">{sitio.creditos.nombre}</a>
+              : <strong>{sitio.creditos.nombre}</strong>}
+          </span>
+        )}
+      </div>
+    </footer>
+
+    <script is:inline>
+      (function () {
+        const toggle = document.querySelector("#menuToggle");
+        const menu = document.querySelector("#siteMenu");
+        if (!toggle || !menu) return;
+        toggle.addEventListener("click", function () {
+          const open = menu.classList.toggle("is-open");
+          toggle.setAttribute("aria-expanded", String(open));
+          toggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+        });
+        menu.querySelectorAll("a").forEach(function (link) {
+          link.addEventListener("click", function () {
+            menu.classList.remove("is-open");
+            toggle.setAttribute("aria-expanded", "false");
+          });
+        });
+      })();
+    </script>
   </body>
 </html>
-<style>
-  :global(*) { box-sizing: border-box; }
-  :global(html) { scroll-behavior: smooth; }
-  :global(body) { margin: 0; font-family: Inter, Arial, sans-serif; background: #101820; }
-  :global(a) { color: inherit; text-decoration: none; }
-  :global(img) { display: block; max-width: 100%; }
-  :global(.site-footer) { display: flex; justify-content: space-between; gap: 18px; padding: 22px max(7vw, 24px); background: #0a1117; color: #abb4b7; font-size: .74rem; }
-  @media(max-width: 560px) { :global(.site-footer) { flex-direction: column; } }
-</style>

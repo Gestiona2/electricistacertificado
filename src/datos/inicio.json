@@ -1,65 +1,116 @@
 {
-  "_comentario": "Todo el contenido de la página de inicio. Una entrada por sección, en el orden en que aparecen. Los textos se editan aquí; el diseño no se toca.",
+  "_comentario": "Contenido visible de la página de inicio. Una entrada por sección. Los textos se editan aquí, nunca en los archivos .astro.",
 
   "meta": {
-    "titulo": "Electricista certificado en Bogotá | Atención profesional",
-    "descripcion": "Electricista profesional y certificado en Bogotá. Estamos preparando nuestro sitio para compartir servicios y canales de atención."
+    "titulo": "Electricista en Bogotá | Jhon Jairo Espinosa",
+    "descripcion": "Servicios eléctricos en Bogotá: instalaciones, reparaciones, mantenimiento, iluminación y soportes para TV. Consulta con Jhon Jairo Espinosa por WhatsApp."
   },
 
   "portada": {
-    "encabezado": "Electricista profesional · Bogotá",
-    "titulo": "Muy pronto",
-    "tituloAcento": "en Bogotá",
-    "texto": "Muy pronto encontrarás aquí información sobre servicios eléctricos profesionales y certificados en Bogotá.",
+    "encabezado": "Electricista certificado · Bogotá",
+    "titulo": "Soluciones eléctricas",
+    "tituloAcento": "para tu hogar",
+    "texto": "Instalaciones, reparaciones, mantenimiento y soluciones eléctricas para hogares y negocios. Cuéntanos qué necesitas y solicita información por WhatsApp.",
     "botones": [
-      { "texto": "Sitio en construcción", "href": "#estado", "estilo": "btn-accent" },
-      { "texto": "Volver al inicio", "href": "#inicio", "estilo": "btn-ghost" }
+      { "texto": "Solicitar servicio por WhatsApp", "href": "https://wa.me/573112958692", "estilo": "btn-accent" },
+      { "texto": "Ver servicios", "href": "#servicios", "estilo": "btn-ghost" }
     ],
-    "imagen": "/electricidad-bogota.svg",
-    "imagenAlt": "Ilustración gráfica de un rayo eléctrico sobre fondo azul oscuro"
+    "imagen": "/images/portada/portada-servicio.jpg",
+    "imagenAlt": "Electricista instalando tomas e interruptores en una vivienda",
+    "sello": "Atención en Bogotá",
+    "nota": "Imagen ilustrativa · Servicio eléctrico residencial"
+  },
+
+  "confianza": {
+    "titulo": "Un servicio eléctrico claro y responsable",
+    "items": [
+      { "titulo": "Instalaciones y reparaciones", "texto": "Trabajos eléctricos para viviendas, apartamentos y pequeños negocios." },
+      { "titulo": "Evaluación previa", "texto": "Cada trabajo se revisa antes de definir el alcance y la información que necesitas." },
+      { "titulo": "Contacto directo", "texto": "Escribe por WhatsApp y explica qué necesitas sin intermediarios." }
+    ]
   },
 
   "servicios": {
-    "encabezado": "Próximamente",
-    "titulo": "Servicios eléctricos en Bogotá",
-    "texto": "Estamos organizando la información para que pronto conozcas nuestros servicios y puedas solicitar atención.",
-    "_limite": "De 3 a 6. Con más, la grilla se ve apretada en pantallas medianas.",
-    "items": []
+    "encabezado": "Qué hago",
+    "titulo": "Servicios eléctricos para tu hogar o negocio",
+    "texto": "Trabajos comunicados por Jhon Jairo. Si no encuentras lo que necesitas, consulta por WhatsApp.",
+    "items": [
+      { "titulo": "Instalaciones eléctricas", "texto": "Instalaciones para viviendas, apartamentos y espacios comerciales.", "icono": "zap", "imagen": "/images/trabajos/trabajo-03-web.jpg", "detalle": "Evaluación previa del lugar y de lo que necesitas." },
+      { "titulo": "Reparaciones eléctricas", "texto": "Revisión y solución de fallas en instalaciones eléctricas.", "icono": "wrench", "imagen": "/images/trabajos/trabajo-01-web.jpg", "detalle": "Cuéntanos qué falla y desde cuándo ocurre." },
+      { "titulo": "Mantenimiento eléctrico", "texto": "Revisión y mantenimiento de instalaciones en hogares y negocios.", "icono": "shield", "imagen": "/images/trabajos/trabajo-05-web.jpg", "detalle": "El alcance se define según las condiciones del inmueble." },
+      { "titulo": "Iluminación interior y exterior", "texto": "Instalación de luces para espacios residenciales y comerciales.", "icono": "lightbulb", "imagen": "/images/trabajos/trabajo-04-web.jpg", "detalle": "Indica los espacios y el tipo de iluminación que buscas." },
+      { "titulo": "Tomacorrientes e interruptores", "texto": "Instalación y reorganización de puntos eléctricos.", "icono": "plug", "imagen": "/images/trabajos/trabajo-06-web.jpg", "detalle": "Consulta la ubicación y la cantidad de puntos requeridos." },
+      { "titulo": "Soporte para televisor", "texto": "Instalación de bases y soportes de pared para televisores.", "icono": "tv", "imagen": "/images/trabajos/trabajo-07-web.jpg", "detalle": "Indica el tamaño del televisor y el tipo de pared." },
+      { "titulo": "Revisión de circuitos", "texto": "Revisión, adecuación y reorganización de circuitos eléctricos.", "icono": "activity", "imagen": "/images/trabajos/trabajo-02-web.jpg", "detalle": "Se recomienda evaluar la instalación antes de definir el trabajo." }
+    ],
+    "_limite": "7 servicios (número impar: el último ocupa toda la fila)."
+  },
+
+  "proceso": {
+    "encabezado": "Cómo trabajamos",
+    "titulo": "De tu mensaje a la solución",
+    "texto": "Un proceso sencillo, sin compromisos hasta que conversemos sobre tu necesidad.",
+    "pasos": [
+      { "numero": "01", "titulo": "Cuéntanos qué necesitas", "texto": "Escribe por WhatsApp y describe el trabajo o la falla. Si puedes, incluye fotos del lugar." },
+      { "numero": "02", "titulo": "Evaluamos el trabajo", "texto": "Se revisa el alcance, el estado de la instalación y la información necesaria para ayudarte." },
+      { "numero": "03", "titulo": "Solicita tu servicio", "texto": "Después de la conversación, acuerdan cómo proceder con el trabajo eléctrico." }
+    ],
+    "_nota": "No se publican tiempos de respuesta, precios ni garantías porque no están confirmados."
   },
 
   "nosotros": {
-    "encabezado": "Atención en Bogotá",
-    "titulo": "Un profesional certificado, a tu servicio",
-    "texto": "Esta página está en construcción. Pronto publicaremos más información sobre el profesional, su certificación y las soluciones eléctricas disponibles en Bogotá.",
-    "imagen": "/electricidad-bogota.svg",
-    "imagenAlt": "Ilustración de un rayo, símbolo de los servicios eléctricos"
+    "encabezado": "Sobre mí",
+    "titulo": "Jhon Jairo Espinosa",
+    "texto": "Electricista certificado en Bogotá. Mi trabajo se centra en instalaciones, reparaciones y mantenimiento eléctrico para hogares y negocios, con comunicación clara y trato respetuoso.",
+    "textoSecundario": "Prefiero entender bien cada necesidad antes de proponer una solución. Si tienes un trabajo eléctrico en tu vivienda o negocio, escríbeme y cuéntame de qué se trata.",
+    "imagen": "/images/retratos/jhon-jairo-perfil.jpg",
+    "imagenAlt": "Retrato de Jhon Jairo Espinosa, electricista certificado en Bogotá",
+    "firma": "Electricista certificado · Bogotá",
+    "boton": { "texto": "Hablar con Jhon Jairo", "href": "https://wa.me/573112958692" },
+    "nota": "La fotografía y el nombre fueron confirmados por el cliente."
   },
 
-  "cifras": {
-    "_limite": "Exactamente 4. Con 3 o 5 la fila queda descompensada. Solo números enteros: se animan contando desde cero.",
-    "_advertencia": "Solo cifras reales y verificables. Nunca inventarlas.",
-    "items": []
-  },
-
-  "testimonios": {
-    "encabezado": "Testimonios",
-    "titulo": "Título de la sección",
-    "_limite": "De 3 a 6. La frase no debe pasar de 180 caracteres o desborda en celular.",
-    "_advertencia": "Nunca inventar testimonios. Si no hay reales, quitar la sección.",
-    "items": []
+  "trabajos": {
+    "encabezado": "Trabajos reales",
+    "titulo": "Imágenes de trabajos eléctricos",
+    "texto": "Fotografías compartidas por Jhon Jairo como parte de su trabajo en Bogotá.",
+    "items": [
+      { "imagen": "/images/trabajos/trabajo-01-web.jpg", "alt": "Trabajo eléctrico residencial en Bogotá", "titulo": "Instalación residencial" },
+      { "imagen": "/images/trabajos/trabajo-02-web.jpg", "alt": "Trabajo de instalación eléctrica en Bogotá", "titulo": "Instalación eléctrica" },
+      { "imagen": "/images/trabajos/trabajo-03-web.jpg", "alt": "Trabajo eléctrico en vivienda en Bogotá", "titulo": "Trabajo en vivienda" },
+      { "imagen": "/images/trabajos/trabajo-04-web.jpg", "alt": "Instalación eléctrica en Bogotá", "titulo": "Instalación y detalles" },
+      { "imagen": "/images/trabajos/trabajo-05-web.jpg", "alt": "Trabajo eléctrico en Bogotá", "titulo": "Servicio eléctrico" },
+      { "imagen": "/images/trabajos/trabajo-06-web.jpg", "alt": "Trabajo eléctrico residencial en Bogotá", "titulo": "Trabajo residencial" },
+      { "imagen": "/images/trabajos/trabajo-07-web.jpg", "alt": "Trabajo de electricidad en Bogotá", "titulo": "Trabajo eléctrico" }
+    ],
+    "boton": { "texto": "Consultar un trabajo similar", "href": "https://wa.me/573112958692" }
   },
 
   "faq": {
-    "encabezado": "En preparación",
-    "titulo": "Muy pronto compartiremos más",
-    "_limite": "De 6 a 10 preguntas.",
-    "items": []
+    "encabezado": "Preguntas frecuentes",
+    "titulo": "Lo que podrías preguntarme",
+    "items": [
+      { "pregunta": "¿En qué zona ofrece servicios?", "respuesta": "La cobertura comunicada es la ciudad de Bogotá, Colombia. Si quieres confirmar tu barrio o zona, escríbeme por WhatsApp." },
+      { "pregunta": "¿Qué tipos de trabajo eléctrico realiza?", "respuesta": "Instalaciones, reparaciones, mantenimiento, iluminación, tomacorrientes, interruptores, revisión de circuitos e instalación de soportes para televisores." },
+      { "pregunta": "¿Cómo solicito información o una cotización?", "respuesta": "Escribe por WhatsApp, cuéntame qué necesitas y, si puedes, comparte fotos del lugar para entender mejor el trabajo." },
+      { "pregunta": "¿Los materiales están incluidos en el servicio?", "respuesta": "El alcance de materiales y de cada trabajo se conversa antes de realizarlo. No publicamos inclusiones generales sin revisar cada caso." },
+      { "pregunta": "¿Publica precios o disponibilidad en la web?", "respuesta": "No. Los precios, horarios y disponibilidad se consultan directamente por WhatsApp según cada trabajo." }
+    ],
+    "_nota": "Todas las respuestas usan solo datos confirmados en el manual de marca."
   },
 
   "contacto": {
-    "encabezado": "Sitio en construcción",
-    "titulo": "Estamos trabajando para atenderte pronto",
-    "texto": "Vuelve pronto para conocer los servicios y encontrar la forma de contacto.",
-    "_nota": "Los datos de contacto (WhatsApp, correo, dirección) salen de sitio.json, no se repiten aquí."
+    "encabezado": "Contacto",
+    "titulo": "¿Necesitas un servicio eléctrico en Bogotá?",
+    "texto": "Cuéntanos qué necesitas y solicita información por WhatsApp. Jhon Jairo Espinosa atenderá tu mensaje directamente.",
+    "boton": { "texto": "Solicitar servicio por WhatsApp", "href": "https://wa.me/573112958692" },
+    "telefono": "+57 311 295 8692",
+    "zona": "Bogotá, Colombia",
+    "nota": "Sin dirección física, correo, horarios ni garantías publicados: esos datos no han sido confirmados."
+  },
+
+  "pie": {
+    "texto": "Soluciones eléctricas con profesionalismo y confianza.",
+    "derechos": "Todos los derechos reservados."
   }
 }

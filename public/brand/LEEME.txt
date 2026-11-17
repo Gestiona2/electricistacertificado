@@ -1,2 +1,8 @@
 Logo y favicon del negocio.
-logo.png (~800x200, fondo transparente) y favicon.png (512x512).
+
+- isologo.png — emblema (escudo azul con rayo dorado), 512 px de ancho, fondo transparente.
+  Se usa en el encabezado y en el pie.
+- favicon.png — el mismo emblema cuadrado, 256 x 256.
+- El logo horizontal original (logo-horizontal.png, azul marino sobre transparente) quedó
+  guardado en `insumos/marca/logo-horizontal-original.png`: sobre fondos oscuros no se lee,
+  por eso el pie usa el isologo con el nombre escrito en la página.

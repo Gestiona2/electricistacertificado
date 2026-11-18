@@ -4,169 +4,193 @@ import datos from "../datos/inicio.json";
 import sitio from "../datos/sitio.json";
 import { ruta } from "../lib/ruta";
 
-const {
-  meta,
-  portada,
-  confianza,
-  servicios,
-  proceso,
-  nosotros,
-  trabajos,
-  faq,
-  contacto,
-  pie,
-} = datos;
+const { meta, portada, servicios, proceso, trabajos, nosotros, faq, contacto } = datos;
+const resumen = servicios.resumen;
 
-const whatsappUrl = `https://wa.me/${sitio.whatsapp}?text=${encodeURIComponent(sitio.whatsappMensaje)}`;
+const whatsappBase = `https://wa.me/${sitio.whatsapp}`;
+const whatsappUrl = `${whatsappBase}?text=${encodeURIComponent(sitio.whatsappMensaje)}`;
 ---
 
 <Layout titulo={meta.titulo} descripcion={meta.descripcion}>
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="container hero-grid">
-      <div class="hero-copy">
-        <p class="eyebrow"><span aria-hidden="true"></span>{portada.encabezado}</p>
-        <h1 id="hero-title">{portada.titulo}<span>{portada.tituloAcento}</span></h1>
-        <p class="hero-description">{portada.texto}</p>
-        <div class="hero-actions">
-          <a class="btn btn-accent" href={ruta(portada.botones[0].href)} target="_blank" rel="noopener">{portada.botones[0].texto}</a>
-          <a class="btn btn-ghost" href={ruta(portada.botones[1].href)}>{portada.botones[1].texto}</a>
-        </div>
-        <div class="hero-proof">
-          <div class="proof-icon" aria-hidden="true">✓</div>
-          <div>
-            <strong>{portada.sello}</strong>
-            <span>Instalaciones, reparaciones y mantenimiento</span>
-          </div>
-        </div>
+  <section class="portada" aria-labelledby="portada-titulo">
+    <div class="portada-texto">
+      <h1 id="portada-titulo">{portada.titulo}</h1>
+      <p class="portada-firma">{portada.firma}</p>
+      <p class="portada-bajada">{portada.texto}</p>
+      <div class="acciones">
+        <a class="btn btn-amarillo btn-grande" href={whatsappUrl} target="_blank" rel="noopener">{portada.boton}</a>
+        <a class="enlace" href={ruta(portada.enlace.href)}>{portada.enlace.texto}</a>
       </div>
-
-      <div class="hero-media">
-        <div class="hero-frame">
-          <img src={ruta(portada.imagen)} alt={portada.imagenAlt} fetchpriority="high" width="1200" height="1797" />
-          <div class="hero-stamp"><span>JHON JAIRO</span><strong>ESPINOSA</strong><small>Electricista certificado</small></div>
-        </div>
-        <p class="image-credit">{portada.nota}</p>
-      </div>
+      <p class="portada-cobertura">{portada.cobertura}</p>
     </div>
+    <figure class="portada-foto campo-amarillo">
+      <img src={ruta(portada.imagen)} alt={portada.imagenAlt} fetchpriority="high" width="1181" height="2100" />
+      <figcaption>{portada.credito}</figcaption>
+    </figure>
   </section>
 
-  <section class="confidence" aria-labelledby="confidence-title">
-    <div class="container">
-      <h2 id="confidence-title" class="sr-only">{confianza.titulo}</h2>
-      <div class="confidence-grid">
-        {confianza.items.map((item, index) => (
-          <div class="confidence-item">
-            <span class="confidence-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-            <div><h3>{item.titulo}</h3><p>{item.texto}</p></div>
-          </div>
-        ))}
+  <section class="seccion servicios" id="servicios" aria-labelledby="servicios-titulo">
+    <div class="contenedor servicios-grid">
+      <div class="servicios-lateral">
+        <h2 id="servicios-titulo">{servicios.titulo}</h2>
+        <p class="texto-grande">{servicios.texto}</p>
+        <div class="consulta campo-azul" id="consulta" aria-live="polite">
+          <h3>{resumen.titulo}</h3>
+          <p class="consulta-vacio" id="consultaVacio">{resumen.vacio}</p>
+          <ul class="consulta-lista" id="consultaLista"></ul>
+          <a class="btn btn-amarillo" id="consultaBoton" href={whatsappUrl} target="_blank" rel="noopener" data-vacio={resumen.botonVacio} data-lleno={resumen.boton}>{resumen.botonVacio}</a>
+        </div>
       </div>
-    </div>
-  </section>
 
-  <section class="section services" id="servicios" aria-labelledby="services-title">
-    <div class="container">
-      <header class="section-heading">
-        <p class="eyebrow"><span aria-hidden="true"></span>{servicios.encabezado}</p>
-        <h2 id="services-title">{servicios.titulo}</h2>
-        <p>{servicios.texto}</p>
-      </header>
-      <div class="services-grid">
+      <ul
+        class="tablero"
+        id="tablero"
+        data-wa={whatsappBase}
+        data-inicio={resumen.mensajeInicio}
+        data-cierre={resumen.mensajeCierre}
+        data-on={resumen.estadoOn}
+        data-off={resumen.estadoOff}
+      >
         {servicios.items.map((item) => (
-          <article class="service-card">
-            <div class="service-image"><img src={ruta(item.imagen)} alt={item.titulo + " en Bogotá"} loading="lazy" width="720" height="540" /></div>
-            <div class="service-body">
-              <div class="service-title-row"><h3>{item.titulo}</h3><span class="service-icon" aria-hidden="true">{item.icono === "zap" ? "ϟ" : item.icono === "wrench" ? "⌁" : item.icono === "shield" ? "◈" : item.icono === "lightbulb" ? "✦" : item.icono === "plug" ? "⊕" : item.icono === "tv" ? "□" : "∿"}</span></div>
-              <p>{item.texto}</p>
-              <small>{item.detalle}</small>
-              <a class="service-link" href={whatsappUrl} target="_blank" rel="noopener">Consultar este servicio <span aria-hidden="true">↗</span></a>
-            </div>
-          </article>
+          <li>
+            <button type="button" class="breaker" role="switch" aria-checked="false" data-nombre={item.titulo}>
+              <span class="palanca" aria-hidden="true"><span></span></span>
+              <span class="breaker-texto">
+                <strong>{item.titulo}</strong>
+                <span>{item.texto}</span>
+                <small>{item.detalle}</small>
+              </span>
+              <span class="breaker-estado" data-estado>{resumen.estadoOff}</span>
+            </button>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   </section>
 
-  <section class="process" id="proceso" aria-labelledby="process-title">
-    <div class="container process-grid">
-      <header class="process-heading">
-        <p class="eyebrow eyebrow-light"><span aria-hidden="true"></span>{proceso.encabezado}</p>
-        <h2 id="process-title">{proceso.titulo}</h2>
-        <p>{proceso.texto}</p>
-        <a class="btn btn-accent" href={whatsappUrl} target="_blank" rel="noopener">Escribir por WhatsApp</a>
+  <section class="seccion proceso campo-azul" id="proceso" aria-labelledby="proceso-titulo">
+    <div class="contenedor proceso-grid">
+      <header>
+        <h2 id="proceso-titulo">{proceso.titulo}</h2>
+        <p class="texto-grande">{proceso.texto}</p>
+        <a class="btn btn-amarillo" href={whatsappUrl} target="_blank" rel="noopener">{proceso.enlace}</a>
       </header>
-      <ol class="process-steps">
+      <ol class="pasos">
         {proceso.pasos.map((paso) => (
-          <li><span>{paso.numero}</span><div><h3>{paso.titulo}</h3><p>{paso.texto}</p></div></li>
+          <li><h3>{paso.titulo}</h3><p>{paso.texto}</p></li>
         ))}
       </ol>
     </div>
   </section>
 
-  <section class="section about" id="nosotros" aria-labelledby="about-title">
-    <div class="container about-grid">
-      <div class="about-image">
-        <img src={ruta(nosotros.imagen)} alt={nosotros.imagenAlt} loading="lazy" width="900" height="900" />
-        <div class="about-badge"><span>◉</span>{nosotros.firma}</div>
-      </div>
-      <div class="about-copy">
-        <p class="eyebrow"><span aria-hidden="true"></span>{nosotros.encabezado}</p>
-        <h2 id="about-title">{nosotros.titulo}</h2>
-        <p class="about-lead">{nosotros.texto}</p>
-        <p>{nosotros.textoSecundario}</p>
-        <a class="btn btn-primary" href={ruta(nosotros.boton.href)} target="_blank" rel="noopener">{nosotros.boton.texto}</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section work" id="trabajos" aria-labelledby="work-title">
-    <div class="container">
-      <header class="section-heading section-heading-split">
+  <section class="seccion trabajos" id="trabajos" aria-labelledby="trabajos-titulo">
+    <div class="contenedor">
+      <header class="trabajos-cabecera">
+        <h2 id="trabajos-titulo">{trabajos.titulo}</h2>
         <div>
-          <p class="eyebrow"><span aria-hidden="true"></span>{trabajos.encabezado}</p>
-          <h2 id="work-title">{trabajos.titulo}</h2>
+          <p class="texto-grande">{trabajos.texto}</p>
+          <a class="enlace" href={whatsappUrl} target="_blank" rel="noopener">{trabajos.boton}</a>
         </div>
-        <div><p>{trabajos.texto}</p><a class="text-link" href={ruta(trabajos.boton.href)} target="_blank" rel="noopener">{trabajos.boton.texto} <span aria-hidden="true">↗</span></a></div>
       </header>
-      <div class="work-grid">
-        {trabajos.items.map((item, index) => (
-          <figure class={index === 0 ? "work-item work-item-wide" : "work-item"}>
-            <img src={ruta(item.imagen)} alt={item.alt} loading="lazy" width="1200" height="900" />
-            <figcaption>{item.titulo}</figcaption>
-          </figure>
-        ))}
+      {trabajos.grupos.map((grupo) => (
+        <div class="grupo">
+          <div class="grupo-cabecera">
+            <h3>{grupo.titulo}</h3>
+            <p>{grupo.texto}</p>
+          </div>
+          <div class={`galeria ${grupo.clase}`}>
+            {grupo.items.map((item) => (
+              <img src={ruta(item.imagen)} alt={item.alt} loading="lazy" width={item.ancho} height={item.alto} />
+            ))}
+          </div>
+        </div>
+      ))}
+      <p class="credito-galeria">{trabajos.credito}</p>
+    </div>
+  </section>
+
+  <section class="seccion nosotros" id="nosotros" aria-labelledby="nosotros-titulo">
+    <div class="contenedor nosotros-grid">
+      <figure class="retrato campo-amarillo">
+        <img src={ruta(nosotros.imagen)} alt={nosotros.imagenAlt} loading="lazy" width="900" height="852" />
+        {nosotros.credito && <figcaption>{nosotros.credito}</figcaption>}
+      </figure>
+      <div class="nosotros-texto">
+        <h2 id="nosotros-titulo">{nosotros.titulo}</h2>
+        <p class="texto-grande texto-fuerte">{nosotros.texto}</p>
+        <p class="texto-grande">{nosotros.textoSecundario}</p>
+        <a class="btn btn-marino" href={whatsappUrl} target="_blank" rel="noopener">{nosotros.boton}</a>
       </div>
     </div>
   </section>
 
-  <section class="section faq" id="faq" aria-labelledby="faq-title">
-    <div class="container faq-grid">
-      <header>
-        <p class="eyebrow"><span aria-hidden="true"></span>{faq.encabezado}</p>
-        <h2 id="faq-title">{faq.titulo}</h2>
-        <p class="faq-note">{faq._nota}</p>
-      </header>
-      <div class="faq-list">
+  <section class="seccion faq" id="faq" aria-labelledby="faq-titulo">
+    <div class="contenedor faq-grid">
+      <h2 id="faq-titulo">{faq.titulo}</h2>
+      <div class="faq-lista">
         {faq.items.map((item) => (
-          <details><summary>{item.pregunta}<span aria-hidden="true">+</span></summary><p>{item.respuesta}</p></details>
+          <details><summary>{item.pregunta}<span class="mas" aria-hidden="true"></span></summary><p>{item.respuesta}</p></details>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="contact" id="contacto" aria-labelledby="contact-title">
-    <div class="container contact-inner">
-      <div class="contact-mark" aria-hidden="true">ϟ</div>
+  <section class="seccion contacto campo-amarillo" id="contacto" aria-labelledby="contacto-titulo">
+    <div class="contenedor contacto-grid">
       <div>
-        <p class="eyebrow eyebrow-light"><span aria-hidden="true"></span>{contacto.encabezado}</p>
-        <h2 id="contact-title">{contacto.titulo}</h2>
-        <p>{contacto.texto}</p>
+        <h2 id="contacto-titulo">{contacto.titulo}</h2>
+        <p class="texto-grande">{contacto.texto}</p>
       </div>
-      <div class="contact-actions">
-        <a class="btn btn-accent" href={ruta(contacto.boton.href)} target="_blank" rel="noopener">{contacto.boton.texto}</a>
-        <strong>{contacto.telefono}</strong>
-        <span>{contacto.zona}</span>
+      <div class="contacto-acciones">
+        <a class="btn btn-marino btn-grande" href={whatsappUrl} target="_blank" rel="noopener">{contacto.boton}</a>
+        <p class="contacto-dato"><span>{contacto.etiquetaTelefono}</span><strong>{contacto.telefono}</strong></p>
+        <p class="contacto-dato"><span>{contacto.zona}</span></p>
       </div>
     </div>
   </section>
 </Layout>
+
+<script is:inline>
+  /* Tablero de servicios: cada trabajo marcado se agrega al mensaje de WhatsApp.
+     Sin script, el botón sigue enviando el mensaje general. */
+  (function () {
+    var tablero = document.getElementById("tablero");
+    if (!tablero) return;
+    var lista = document.getElementById("consultaLista");
+    var vacio = document.getElementById("consultaVacio");
+    var boton = document.getElementById("consultaBoton");
+    var base = boton.getAttribute("href");
+
+    function actualizar() {
+      var marcados = Array.prototype.filter.call(tablero.querySelectorAll(".breaker"), function (b) {
+        return b.getAttribute("aria-checked") === "true";
+      });
+      lista.innerHTML = "";
+      marcados.forEach(function (b) {
+        var li = document.createElement("li");
+        li.textContent = b.dataset.nombre;
+        lista.appendChild(li);
+      });
+      vacio.hidden = marcados.length > 0;
+      if (!marcados.length) {
+        boton.textContent = boton.dataset.vacio;
+        boton.setAttribute("href", base);
+        return;
+      }
+      var texto = tablero.dataset.inicio + "\n" +
+        marcados.map(function (b) { return "- " + b.dataset.nombre; }).join("\n") + "\n" +
+        tablero.dataset.cierre;
+      boton.textContent = boton.dataset.lleno;
+      boton.setAttribute("href", tablero.dataset.wa + "?text=" + encodeURIComponent(texto));
+    }
+
+    tablero.querySelectorAll(".breaker").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var activo = b.getAttribute("aria-checked") === "true";
+        b.setAttribute("aria-checked", String(!activo));
+        b.querySelector("[data-estado]").textContent = activo ? tablero.dataset.off : tablero.dataset.on;
+        actualizar();
+      });
+    });
+  })();
+</script>

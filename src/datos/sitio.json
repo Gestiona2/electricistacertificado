@@ -18,7 +18,21 @@
     { "id": "nosotros", "texto": "Sobre mí", "href": "#nosotros" },
     { "id": "faq", "texto": "Preguntas", "href": "#faq" }
   ],
-  "ctaPrincipal": { "texto": "Consultar por WhatsApp", "href": "https://wa.me/573112958692" },
+  "ctaPrincipal": { "texto": "Escribir por WhatsApp", "href": "https://wa.me/573112958692" },
+  "descriptor": "Electricista certificado",
+  "interfaz": {
+    "saltar": "Saltar al contenido",
+    "inicio": "Ir al inicio",
+    "menuPrincipal": "Menú principal",
+    "abrirMenu": "Abrir menú",
+    "cerrarMenu": "Cerrar menú",
+    "temaOscuro": "Activar modo oscuro",
+    "temaClaro": "Activar modo claro",
+    "whatsappFlotante": "Escribir por WhatsApp a Jhon Jairo Espinosa",
+    "navegacion": "Navegación",
+    "contacto": "Contacto",
+    "derechos": "Todos los derechos reservados."
+  },
   "creditos": {
     "_nota": "Línea del pie: quién hizo el sitio. Con url vacía sale sin enlace.",
     "texto": "Sitio web desarrollado por",

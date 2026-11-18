@@ -1,15 +1,18 @@
 ---
 import "../styles/global.css";
+import fuenteUrl from "../fonts/montserrat-variable.woff2?url";
 import sitio from "../datos/sitio.json";
+import inicio from "../datos/inicio.json";
 import { ruta } from "../lib/ruta";
 
 interface Props {
   titulo: string;
   descripcion?: string;
-  activa?: string;
 }
 const { titulo, descripcion = sitio.descripcion } = Astro.props;
+const ui = sitio.interfaz;
 const whatsappUrl = `https://wa.me/${sitio.whatsapp}?text=${encodeURIComponent(sitio.whatsappMensaje)}`;
+const claveTema = sitio.claveTema;
 ---
 
 <!doctype html>
@@ -17,7 +20,7 @@ const whatsappUrl = `https://wa.me/${sitio.whatsapp}?text=${encodeURIComponent(s
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#082B52" />
+    <meta name="theme-color" content="#ffffff" />
     <title>{titulo}</title>
     <meta name="description" content={descripcion} />
     <meta property="og:title" content={titulo} />
@@ -25,38 +28,41 @@ const whatsappUrl = `https://wa.me/${sitio.whatsapp}?text=${encodeURIComponent(s
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_CO" />
     <link rel="icon" href={ruta("/brand/favicon.png")} type="image/png" />
+    <link rel="preload" href={fuenteUrl} as="font" type="font/woff2" crossorigin />
+    <!-- Tema: siempre claro. Solo se pasa a oscuro si la persona lo activó con el botón. -->
+    <script is:inline define:vars={{ claveTema }}>
+      try {
+        if (localStorage.getItem(claveTema) === "oscuro") document.documentElement.dataset.tema = "oscuro";
+      } catch (e) {}
+    </script>
   </head>
   <body>
-    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <a class="saltar" href="#contenido">{ui.saltar}</a>
 
-    <header class="topbar">
-      <div class="container topbar-inner">
-        <span class="topbar-location"><span aria-hidden="true">◉</span> Atención en Bogotá · Electricista certificado</span>
-        <a class="topbar-phone" href={whatsappUrl} target="_blank" rel="noopener">+57 311 295 8692</a>
-      </div>
-    </header>
-
-    <header class="site-header" id="siteHeader">
-      <div class="container header-inner">
-        <a class="brand" href={ruta("/")} aria-label="Ir al inicio">
-          <img class="brand-mark" src={ruta("/brand/isologo.png")} alt="" width="44" height="44" />
-          <span class="brand-text">
+    <header class="cabecera" id="cabecera">
+      <div class="cabecera-interior">
+        <a class="marca" href={ruta("/")} aria-label={ui.inicio}>
+          <img class="marca-simbolo" src={ruta("/brand/isologo.png")} alt="" width="44" height="42" />
+          <span class="marca-texto">
             <strong>{sitio.nombre}</strong>
-            <small>Electricista certificado</small>
+            <span>{sitio.descriptor}</span>
           </span>
         </a>
 
-        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="siteMenu">
-          <span></span><span></span><span></span>
-        </button>
-
-        <nav class="site-menu" id="siteMenu" aria-label="Menú principal">
+        <nav class="menu" id="menu" aria-label={ui.menuPrincipal}>
           {sitio.menu.map((item) => <a href={ruta(item.href)}>{item.texto}</a>)}
         </nav>
 
-        <a class="header-cta" href={whatsappUrl} target="_blank" rel="noopener">
-          <span aria-hidden="true">✆</span> {sitio.ctaPrincipal.texto}
-        </a>
+        <div class="cabecera-acciones">
+          <button class="boton-tema" id="botonTema" type="button" aria-pressed="false" aria-label={ui.temaOscuro} data-claro={ui.temaClaro} data-oscuro={ui.temaOscuro}>
+            <svg class="icono-luna" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a.7.7 0 0 0-.9-.9A10 10 0 1 0 21.4 15.5a.7.7 0 0 0-.9-.9Z"/></svg>
+            <svg class="icono-sol" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></g></svg>
+          </button>
+          <a class="btn btn-amarillo cabecera-cta" href={whatsappUrl} target="_blank" rel="noopener">{sitio.ctaPrincipal.texto}</a>
+          <button class="boton-menu" id="botonMenu" type="button" aria-expanded="false" aria-controls="menu" aria-label={ui.abrirMenu} data-abrir={ui.abrirMenu} data-cerrar={ui.cerrarMenu}>
+            <span></span><span></span><span></span>
+          </button>
+        </div>
       </div>
     </header>
 
@@ -64,62 +70,89 @@ const whatsappUrl = `https://wa.me/${sitio.whatsapp}?text=${encodeURIComponent(s
       <slot />
     </main>
 
-    <a class="floating-whatsapp" href={whatsappUrl} target="_blank" rel="noopener" aria-label="Escribir por WhatsApp a Jhon Jairo Espinosa">
-      <span aria-hidden="true">✆</span>
+    <a class="flotante" href={whatsappUrl} target="_blank" rel="noopener" aria-label={ui.whatsappFlotante}>
+      <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.8 1.9 6.8L3 29l6.6-1.8a13 13 0 0 0 6.4 1.7c7.2 0 13-5.7 13-12.8S23.200 3 16 3Zm0 23.500c-2 0-3.900-.6-5.500-1.600l-.4-.2-3.900 1 1-3.800-.3-.4A10.500 10.500 0 0 1 5.500 15.800C5.500 10 10.200 5.400 16 5.400s10.500 4.600 10.500 10.400S21.800 26.500 16 26.500Zm5.800-7.800c-.3-.2-1.900-.9-2.200-1-.3-.1-.5-.2-.7.200-.2.300-.8 1-1 1.200-.2.200-.4.200-.7.100a8.600 8.600 0 0 1-4.300-3.700c-.3-.6.300-.5.900-1.700.1-.2 0-.4 0-.5l-1-2.300c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.100-.9.400-.3.300-1.200 1.200-1.200 2.800s1.200 3.300 1.400 3.500c.2.200 2.400 3.700 5.800 5.100 2.100.9 2.900.9 3.900.8.600-.1 1.900-.8 2.200-1.600.3-.8.300-1.400.2-1.600-.1-.2-.3-.3-.6-.4Z"/></svg>
     </a>
 
-    <footer class="site-footer">
-      <div class="container footer-grid">
-        <div>
-          <a class="footer-brand" href={ruta("/")} aria-label="Jhon Jairo Espinosa, electricista certificado">
-            <img src={ruta("/brand/isologo.png")} alt="" width="58" height="58" class="footer-mark" loading="lazy" />
-            <span class="footer-brand-text">
-              <strong>{sitio.nombre}</strong>
-              <small>Electricista certificado</small>
+    <footer class="pie campo-azul-hondo">
+      <div class="pie-contenido">
+        <p class="pie-nombre" aria-hidden="true">{sitio.nombre}</p>
+        <div class="pie-columnas">
+          <div>
+            <a class="marca marca-pie" href={ruta("/")} aria-label={ui.inicio}>
+              <img class="marca-simbolo" src={ruta("/brand/isologo.png")} alt="" width="56" height="53" loading="lazy" />
+              <span class="marca-texto">
+                <strong>{sitio.nombre}</strong>
+                <span>{sitio.descriptor}</span>
+              </span>
+            </a>
+            <p>{inicio.pie.texto}</p>
+          </div>
+          <div>
+            <h2>{ui.contacto}</h2>
+            <a href={whatsappUrl} target="_blank" rel="noopener">WhatsApp: {inicio.contacto.telefono}</a>
+            <span>{sitio.direccion}</span>
+          </div>
+          <div>
+            <h2>{ui.navegacion}</h2>
+            {sitio.menu.map((item) => <a href={ruta(item.href)}>{item.texto}</a>)}
+          </div>
+        </div>
+        <div class="pie-base">
+          <span>© {new Date().getFullYear()} {sitio.razonSocial}. {ui.derechos}</span>
+          {sitio.creditos && (
+            <span class="pie-credito">
+              {sitio.creditos.texto}{" "}
+              {sitio.creditos.url
+                ? <a href={sitio.creditos.url} target="_blank" rel="noopener">{sitio.creditos.nombre}</a>
+                : <strong>{sitio.creditos.nombre}</strong>}
             </span>
-          </a>
-          <p>Soluciones eléctricas con profesionalismo y confianza.</p>
+          )}
         </div>
-        <div>
-          <h2>Contacto</h2>
-          <a href={whatsappUrl} target="_blank" rel="noopener">WhatsApp: +57 311 295 8692</a>
-          <span>Bogotá, Colombia</span>
-        </div>
-        <div>
-          <h2>Navegación</h2>
-          {sitio.menu.map((item) => <a href={ruta(item.href)}>{item.texto}</a>)}
-        </div>
-      </div>
-      <div class="container footer-bottom">
-        <span>© {new Date().getFullYear()} {sitio.razonSocial}. Todos los derechos reservados.</span>
-        <span>Electricista certificado · Bogotá</span>
-        {sitio.creditos && (
-          <span class="footer-credit">
-            {sitio.creditos.texto}{" "}
-            {sitio.creditos.url
-              ? <a href={sitio.creditos.url} target="_blank" rel="noopener">{sitio.creditos.nombre}</a>
-              : <strong>{sitio.creditos.nombre}</strong>}
-          </span>
-        )}
       </div>
     </footer>
 
-    <script is:inline>
+    <script is:inline define:vars={{ claveTema }}>
       (function () {
-        const toggle = document.querySelector("#menuToggle");
-        const menu = document.querySelector("#siteMenu");
-        if (!toggle || !menu) return;
-        toggle.addEventListener("click", function () {
-          const open = menu.classList.toggle("is-open");
-          toggle.setAttribute("aria-expanded", String(open));
-          toggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
-        });
-        menu.querySelectorAll("a").forEach(function (link) {
-          link.addEventListener("click", function () {
-            menu.classList.remove("is-open");
-            toggle.setAttribute("aria-expanded", "false");
+        var raiz = document.documentElement;
+
+        /* modo claro / oscuro: claro por defecto, oscuro solo si la persona lo activa */
+        var botonTema = document.getElementById("botonTema");
+        function pintarTema() {
+          var oscuro = raiz.dataset.tema === "oscuro";
+          if (!botonTema) return;
+          botonTema.setAttribute("aria-pressed", String(oscuro));
+          botonTema.setAttribute("aria-label", oscuro ? botonTema.dataset.claro : botonTema.dataset.oscuro);
+        }
+        if (botonTema) {
+          botonTema.addEventListener("click", function () {
+            var oscuro = raiz.dataset.tema === "oscuro";
+            if (oscuro) delete raiz.dataset.tema; else raiz.dataset.tema = "oscuro";
+            try { localStorage.setItem(claveTema, oscuro ? "claro" : "oscuro"); } catch (e) {}
+            pintarTema();
           });
-        });
+          pintarTema();
+        }
+
+        /* menú móvil */
+        var boton = document.getElementById("botonMenu");
+        var menu = document.getElementById("menu");
+        if (boton && menu) {
+          function cerrar() {
+            menu.classList.remove("abierto");
+            boton.setAttribute("aria-expanded", "false");
+            boton.setAttribute("aria-label", boton.dataset.abrir);
+          }
+          boton.addEventListener("click", function () {
+            var abierto = menu.classList.toggle("abierto");
+            boton.setAttribute("aria-expanded", String(abierto));
+            boton.setAttribute("aria-label", abierto ? boton.dataset.cerrar : boton.dataset.abrir);
+          });
+          menu.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", cerrar); });
+          document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape" && menu.classList.contains("abierto")) { cerrar(); boton.focus(); }
+          });
+        }
       })();
     </script>
   </body>

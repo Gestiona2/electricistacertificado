@@ -1,116 +1,205 @@
 {
   "_comentario": "Contenido visible de la página de inicio. Una entrada por sección. Los textos se editan aquí, nunca en los archivos .astro.",
-
   "meta": {
-    "titulo": "Electricista en Bogotá | Jhon Jairo Espinosa",
+    "titulo": "Electricista certificado en Bogotá | Jhon Jairo Espinosa",
     "descripcion": "Servicios eléctricos en Bogotá: instalaciones, reparaciones, mantenimiento, iluminación y soportes para TV. Consulta con Jhon Jairo Espinosa por WhatsApp."
   },
-
   "portada": {
-    "encabezado": "Electricista certificado · Bogotá",
-    "titulo": "Soluciones eléctricas",
-    "tituloAcento": "para tu hogar",
-    "texto": "Instalaciones, reparaciones, mantenimiento y soluciones eléctricas para hogares y negocios. Cuéntanos qué necesitas y solicita información por WhatsApp.",
-    "botones": [
-      { "texto": "Solicitar servicio por WhatsApp", "href": "https://wa.me/573112958692", "estilo": "btn-accent" },
-      { "texto": "Ver servicios", "href": "#servicios", "estilo": "btn-ghost" }
-    ],
-    "imagen": "/images/portada/portada-servicio.jpg",
-    "imagenAlt": "Electricista instalando tomas e interruptores en una vivienda",
-    "sello": "Atención en Bogotá",
-    "nota": "Imagen ilustrativa · Servicio eléctrico residencial"
+    "titulo": "Electricista en Bogotá",
+    "firma": "Jhon Jairo Espinosa, electricista certificado.",
+    "texto": "Instalaciones, reparaciones y mantenimiento eléctrico para hogares y negocios. Escríbeme por WhatsApp, cuéntame qué necesitas y, si puedes, envía fotos del lugar.",
+    "boton": "Pedir servicio por WhatsApp",
+    "enlace": {
+      "texto": "Ver qué hago",
+      "href": "#servicios"
+    },
+    "cobertura": "Atención en Bogotá, Colombia",
+    "imagen": "/images/portada/portada-multimetro.jpg",
+    "imagenAlt": "Electricista midiendo con un multímetro las conexiones de un tablero eléctrico",
+    "credito": "Imagen ilustrativa · Foto: Bulat843, Pexels"
   },
-
-  "confianza": {
-    "titulo": "Un servicio eléctrico claro y responsable",
-    "items": [
-      { "titulo": "Instalaciones y reparaciones", "texto": "Trabajos eléctricos para viviendas, apartamentos y pequeños negocios." },
-      { "titulo": "Evaluación previa", "texto": "Cada trabajo se revisa antes de definir el alcance y la información que necesitas." },
-      { "titulo": "Contacto directo", "texto": "Escribe por WhatsApp y explica qué necesitas sin intermediarios." }
-    ]
-  },
-
   "servicios": {
-    "encabezado": "Qué hago",
-    "titulo": "Servicios eléctricos para tu hogar o negocio",
-    "texto": "Trabajos comunicados por Jhon Jairo. Si no encuentras lo que necesitas, consulta por WhatsApp.",
+    "titulo": "¿Qué necesitas?",
+    "texto": "Marca los trabajos que necesitas y te armo el mensaje para WhatsApp. Si no ves el tuyo, escríbeme igual.",
     "items": [
-      { "titulo": "Instalaciones eléctricas", "texto": "Instalaciones para viviendas, apartamentos y espacios comerciales.", "icono": "zap", "imagen": "/images/trabajos/trabajo-03-web.jpg", "detalle": "Evaluación previa del lugar y de lo que necesitas." },
-      { "titulo": "Reparaciones eléctricas", "texto": "Revisión y solución de fallas en instalaciones eléctricas.", "icono": "wrench", "imagen": "/images/trabajos/trabajo-01-web.jpg", "detalle": "Cuéntanos qué falla y desde cuándo ocurre." },
-      { "titulo": "Mantenimiento eléctrico", "texto": "Revisión y mantenimiento de instalaciones en hogares y negocios.", "icono": "shield", "imagen": "/images/trabajos/trabajo-05-web.jpg", "detalle": "El alcance se define según las condiciones del inmueble." },
-      { "titulo": "Iluminación interior y exterior", "texto": "Instalación de luces para espacios residenciales y comerciales.", "icono": "lightbulb", "imagen": "/images/trabajos/trabajo-04-web.jpg", "detalle": "Indica los espacios y el tipo de iluminación que buscas." },
-      { "titulo": "Tomacorrientes e interruptores", "texto": "Instalación y reorganización de puntos eléctricos.", "icono": "plug", "imagen": "/images/trabajos/trabajo-06-web.jpg", "detalle": "Consulta la ubicación y la cantidad de puntos requeridos." },
-      { "titulo": "Soporte para televisor", "texto": "Instalación de bases y soportes de pared para televisores.", "icono": "tv", "imagen": "/images/trabajos/trabajo-07-web.jpg", "detalle": "Indica el tamaño del televisor y el tipo de pared." },
-      { "titulo": "Revisión de circuitos", "texto": "Revisión, adecuación y reorganización de circuitos eléctricos.", "icono": "activity", "imagen": "/images/trabajos/trabajo-02-web.jpg", "detalle": "Se recomienda evaluar la instalación antes de definir el trabajo." }
+      {
+        "titulo": "Instalaciones eléctricas",
+        "texto": "Instalaciones para viviendas, apartamentos y espacios comerciales.",
+        "detalle": "Evaluación previa del lugar y de lo que necesitas."
+      },
+      {
+        "titulo": "Reparaciones eléctricas",
+        "texto": "Revisión y solución de fallas en instalaciones eléctricas.",
+        "detalle": "Cuéntame qué falla y desde cuándo ocurre."
+      },
+      {
+        "titulo": "Mantenimiento eléctrico",
+        "texto": "Revisión y mantenimiento de instalaciones en hogares y negocios.",
+        "detalle": "El alcance se define según las condiciones del inmueble."
+      },
+      {
+        "titulo": "Iluminación interior y exterior",
+        "texto": "Instalación de luces para espacios residenciales y comerciales.",
+        "detalle": "Indica los espacios y el tipo de iluminación que buscas."
+      },
+      {
+        "titulo": "Tomacorrientes e interruptores",
+        "texto": "Instalación y reorganización de puntos eléctricos.",
+        "detalle": "Consulta la ubicación y la cantidad de puntos requeridos."
+      },
+      {
+        "titulo": "Soporte para televisor",
+        "texto": "Instalación de bases y soportes de pared para televisores.",
+        "detalle": "Indica el tamaño del televisor y el tipo de pared."
+      },
+      {
+        "titulo": "Revisión de circuitos",
+        "texto": "Revisión, adecuación y reorganización de circuitos eléctricos.",
+        "detalle": "Se recomienda evaluar la instalación antes de definir el trabajo."
+      }
     ],
-    "_limite": "7 servicios (número impar: el último ocupa toda la fila)."
+    "resumen": {
+      "titulo": "Tu consulta",
+      "vacio": "Aún no has marcado ningún trabajo.",
+      "boton": "Enviar por WhatsApp",
+      "botonVacio": "Escribir por WhatsApp",
+      "estadoOff": "Marcar",
+      "estadoOn": "En tu consulta",
+      "mensajeInicio": "Hola Jhon Jairo, vi tu página web y necesito información sobre:",
+      "mensajeCierre": "¿Podrías ayudarme?"
+    },
+    "_limite": "El tablero arma el mensaje de WhatsApp con lo que el visitante marca. No se publican precios, tiempos ni garantías porque no están confirmados."
   },
-
   "proceso": {
-    "encabezado": "Cómo trabajamos",
     "titulo": "De tu mensaje a la solución",
     "texto": "Un proceso sencillo, sin compromisos hasta que conversemos sobre tu necesidad.",
+    "enlace": "Escribir por WhatsApp",
     "pasos": [
-      { "numero": "01", "titulo": "Cuéntanos qué necesitas", "texto": "Escribe por WhatsApp y describe el trabajo o la falla. Si puedes, incluye fotos del lugar." },
-      { "numero": "02", "titulo": "Evaluamos el trabajo", "texto": "Se revisa el alcance, el estado de la instalación y la información necesaria para ayudarte." },
-      { "numero": "03", "titulo": "Solicita tu servicio", "texto": "Después de la conversación, acuerdan cómo proceder con el trabajo eléctrico." }
+      {
+        "titulo": "Cuéntame qué necesitas",
+        "texto": "Escribe por WhatsApp y describe el trabajo o la falla. Si puedes, incluye fotos del lugar."
+      },
+      {
+        "titulo": "Evaluamos el trabajo",
+        "texto": "Se revisa el alcance, el estado de la instalación y la información necesaria para ayudarte."
+      },
+      {
+        "titulo": "Acordamos cómo proceder",
+        "texto": "Después de la conversación, acordamos cómo hacer el trabajo eléctrico."
+      }
     ],
     "_nota": "No se publican tiempos de respuesta, precios ni garantías porque no están confirmados."
   },
-
+  "trabajos": {
+    "titulo": "Tipos de trabajo",
+    "texto": "Imágenes ilustrativas del tipo de trabajo que realizo en Bogotá.",
+    "boton": "Consultar un trabajo similar",
+    "credito": "Imágenes ilustrativas · Fotos: Pexels",
+    "grupos": [
+      {
+        "clase": "galeria-muros",
+        "titulo": "Tableros y conexiones",
+        "texto": "Revisión de tableros, breakers y puntos eléctricos.",
+        "items": [
+          {
+            "imagen": "/images/trabajos/banco-tablero-breakers.jpg",
+            "alt": "Tablero eléctrico con breakers y cables de colores ordenados",
+            "ancho": 1200,
+            "alto": 747
+          },
+          {
+            "imagen": "/images/trabajos/banco-tablero-taladro.jpg",
+            "alt": "Electricista atornillando conexiones en un tablero eléctrico",
+            "ancho": 1200,
+            "alto": 900
+          },
+          {
+            "imagen": "/images/trabajos/banco-cajas-cables.jpg",
+            "alt": "Cajas verdes para tomas con cables en un muro blanco",
+            "ancho": 1200,
+            "alto": 801
+          }
+        ]
+      },
+      {
+        "clase": "galeria-altura",
+        "titulo": "Trabajo en altura",
+        "texto": "Intervenciones en postes y redes eléctricas con escalera.",
+        "items": [
+          {
+            "imagen": "/images/trabajos/banco-poste-escalera-roja.jpg",
+            "alt": "Electricista con casco sobre una escalera roja en un poste con cables",
+            "ancho": 900,
+            "alto": 1350
+          },
+          {
+            "imagen": "/images/trabajos/banco-poste-escalera-naranja.jpg",
+            "alt": "Electricista con casco naranja en una escalera entre cables de un poste",
+            "ancho": 900,
+            "alto": 1125
+          },
+          {
+            "imagen": "/images/trabajos/banco-poste-calle.jpg",
+            "alt": "Electricistas trabajando en un poste con escalera junto a una camioneta",
+            "ancho": 900,
+            "alto": 1350
+          },
+          {
+            "imagen": "/images/trabajos/banco-poste-cielo.jpg",
+            "alt": "Electricista en una escalera sobre un poste bajo un cielo azul",
+            "ancho": 900,
+            "alto": 1200
+          }
+        ]
+      }
+    ]
+  },
   "nosotros": {
-    "encabezado": "Sobre mí",
     "titulo": "Jhon Jairo Espinosa",
     "texto": "Electricista certificado en Bogotá. Mi trabajo se centra en instalaciones, reparaciones y mantenimiento eléctrico para hogares y negocios, con comunicación clara y trato respetuoso.",
     "textoSecundario": "Prefiero entender bien cada necesidad antes de proponer una solución. Si tienes un trabajo eléctrico en tu vivienda o negocio, escríbeme y cuéntame de qué se trata.",
-    "imagen": "/images/retratos/jhon-jairo-perfil.jpg",
-    "imagenAlt": "Retrato de Jhon Jairo Espinosa, electricista certificado en Bogotá",
-    "firma": "Electricista certificado · Bogotá",
-    "boton": { "texto": "Hablar con Jhon Jairo", "href": "https://wa.me/573112958692" },
-    "nota": "La fotografía y el nombre fueron confirmados por el cliente."
+    "imagen": "/images/retratos/jhon-jairo-uniforme.jpg",
+    "imagenAlt": "Jhon Jairo Espinosa, electricista, con su uniforme azul de trabajo",
+    "boton": "Hablar con Jhon Jairo",
+    "_nota": "Foto real enviada por el cliente (insumos/fotos/cliente-originales/jhon-jairo-uniforme-original.jpeg, 640 px). Pedir una de mayor resolución si se puede.",
+    "credito": ""
   },
-
-  "trabajos": {
-    "encabezado": "Trabajos reales",
-    "titulo": "Imágenes de trabajos eléctricos",
-    "texto": "Fotografías compartidas por Jhon Jairo como parte de su trabajo en Bogotá.",
-    "items": [
-      { "imagen": "/images/trabajos/trabajo-01-web.jpg", "alt": "Trabajo eléctrico residencial en Bogotá", "titulo": "Instalación residencial" },
-      { "imagen": "/images/trabajos/trabajo-02-web.jpg", "alt": "Trabajo de instalación eléctrica en Bogotá", "titulo": "Instalación eléctrica" },
-      { "imagen": "/images/trabajos/trabajo-03-web.jpg", "alt": "Trabajo eléctrico en vivienda en Bogotá", "titulo": "Trabajo en vivienda" },
-      { "imagen": "/images/trabajos/trabajo-04-web.jpg", "alt": "Instalación eléctrica en Bogotá", "titulo": "Instalación y detalles" },
-      { "imagen": "/images/trabajos/trabajo-05-web.jpg", "alt": "Trabajo eléctrico en Bogotá", "titulo": "Servicio eléctrico" },
-      { "imagen": "/images/trabajos/trabajo-06-web.jpg", "alt": "Trabajo eléctrico residencial en Bogotá", "titulo": "Trabajo residencial" },
-      { "imagen": "/images/trabajos/trabajo-07-web.jpg", "alt": "Trabajo de electricidad en Bogotá", "titulo": "Trabajo eléctrico" }
-    ],
-    "boton": { "texto": "Consultar un trabajo similar", "href": "https://wa.me/573112958692" }
-  },
-
   "faq": {
-    "encabezado": "Preguntas frecuentes",
     "titulo": "Lo que podrías preguntarme",
     "items": [
-      { "pregunta": "¿En qué zona ofrece servicios?", "respuesta": "La cobertura comunicada es la ciudad de Bogotá, Colombia. Si quieres confirmar tu barrio o zona, escríbeme por WhatsApp." },
-      { "pregunta": "¿Qué tipos de trabajo eléctrico realiza?", "respuesta": "Instalaciones, reparaciones, mantenimiento, iluminación, tomacorrientes, interruptores, revisión de circuitos e instalación de soportes para televisores." },
-      { "pregunta": "¿Cómo solicito información o una cotización?", "respuesta": "Escribe por WhatsApp, cuéntame qué necesitas y, si puedes, comparte fotos del lugar para entender mejor el trabajo." },
-      { "pregunta": "¿Los materiales están incluidos en el servicio?", "respuesta": "El alcance de materiales y de cada trabajo se conversa antes de realizarlo. No publicamos inclusiones generales sin revisar cada caso." },
-      { "pregunta": "¿Publica precios o disponibilidad en la web?", "respuesta": "No. Los precios, horarios y disponibilidad se consultan directamente por WhatsApp según cada trabajo." }
+      {
+        "pregunta": "¿En qué zona ofrece servicios?",
+        "respuesta": "La cobertura comunicada es la ciudad de Bogotá, Colombia. Si quieres confirmar tu barrio o zona, escríbeme por WhatsApp."
+      },
+      {
+        "pregunta": "¿Qué tipos de trabajo eléctrico realiza?",
+        "respuesta": "Instalaciones, reparaciones, mantenimiento, iluminación, tomacorrientes, interruptores, revisión de circuitos e instalación de soportes para televisores."
+      },
+      {
+        "pregunta": "¿Cómo solicito información o una cotización?",
+        "respuesta": "Escribe por WhatsApp, cuéntame qué necesitas y, si puedes, comparte fotos del lugar para entender mejor el trabajo."
+      },
+      {
+        "pregunta": "¿Los materiales están incluidos en el servicio?",
+        "respuesta": "El alcance de materiales y de cada trabajo se conversa antes de realizarlo. No publicamos inclusiones generales sin revisar cada caso."
+      },
+      {
+        "pregunta": "¿Publica precios o disponibilidad en la web?",
+        "respuesta": "No. Los precios, horarios y disponibilidad se consultan directamente por WhatsApp según cada trabajo."
+      }
     ],
     "_nota": "Todas las respuestas usan solo datos confirmados en el manual de marca."
   },
-
   "contacto": {
-    "encabezado": "Contacto",
-    "titulo": "¿Necesitas un servicio eléctrico en Bogotá?",
-    "texto": "Cuéntanos qué necesitas y solicita información por WhatsApp. Jhon Jairo Espinosa atenderá tu mensaje directamente.",
-    "boton": { "texto": "Solicitar servicio por WhatsApp", "href": "https://wa.me/573112958692" },
+    "titulo": "¿Necesitas un electricista?",
+    "texto": "Atiendo en Bogotá. Cuéntame qué necesitas y solicita información por WhatsApp; tu mensaje lo atiendo directamente.",
+    "boton": "Escribir por WhatsApp",
+    "etiquetaTelefono": "WhatsApp",
     "telefono": "+57 311 295 8692",
     "zona": "Bogotá, Colombia",
-    "nota": "Sin dirección física, correo, horarios ni garantías publicados: esos datos no han sido confirmados."
+    "_nota": "Sin dirección física, correo, horarios ni garantías publicados: esos datos no han sido confirmados."
   },
-
   "pie": {
-    "texto": "Soluciones eléctricas con profesionalismo y confianza.",
-    "derechos": "Todos los derechos reservados."
+    "texto": "Soluciones eléctricas con profesionalismo y confianza."
   }
 }

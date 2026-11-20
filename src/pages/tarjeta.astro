@@ -98,7 +98,7 @@ const telefono = `+${sitio.whatsapp}`;
         <dl class="t-datos">
           <div><dt>{t.contacto.whatsapp}</dt><dd><a href={whatsappUrl} target="_blank" rel="noopener">{inicio.contacto.telefono}</a></dd></div>
           <div><dt>{t.contacto.zona}</dt><dd>{t.perfil.zona}</dd></div>
-          <div><dt>{t.contacto.web}</dt><dd><a href={ruta("/")}>{t.contacto.urlWeb}</a></dd></div>
+          <div><dt>{t.contacto.web}</dt><dd class="t-url"><a href={ruta("/")}>{t.contacto.urlWeb.split("|").map((parte, i) => <>{i > 0 && <wbr />}{parte}</>)}</a></dd></div>
         </dl>
         <a class="btn btn-marino" href={ruta("/")}>{t.contacto.boton}</a>
       </section>

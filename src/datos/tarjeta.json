@@ -44,8 +44,9 @@
     "whatsapp": "WhatsApp",
     "zona": "Cobertura",
     "web": "Sitio web",
-    "urlWeb": "electricistascertificadosbogota.com",
-    "boton": "Ver mi página web"
+    "urlWeb": "electricistascertificados|bogota.com",
+    "boton": "Ver mi página web",
+    "_urlWeb": "La barra | marca dónde puede partirse el dominio si no cabe en una línea; no se muestra."
   },
   "qr": {
     "titulo": "Comparte esta tarjeta",

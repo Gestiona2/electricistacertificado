@@ -5,6 +5,12 @@ que envió el cliente se veían mal. Las originales del cliente se guardaron en
 `insumos/fotos/cliente-originales/` y ya no se publican. Ninguna foto de banco se presenta
 como trabajo real de Jhon Jairo: cada bloque lleva la nota "Imagen ilustrativa".
 
+> **Actualización 2026-11-19:** por decisión del proveedor se quitaron de la web las notas
+> "Imagen ilustrativa" y los créditos de Pexels (la licencia no exige atribución). Esta
+> tabla queda como registro interno de dónde salió cada foto. El manual de marca sigue
+> pidiendo no presentar fotos de banco como trabajos reales: cambiarlas por fotos reales
+> del cliente cuando tenga buenas.
+
 ## Portada
 
 - Archivo: `public/images/portada/portada-multimetro.jpg` (2026-11-17, reemplaza a `portada-servicio.jpg`, que queda sin usar)

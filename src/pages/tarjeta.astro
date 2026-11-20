@@ -1,0 +1,185 @@
+---
+import LayoutTarjeta from "../layouts/LayoutTarjeta.astro";
+import t from "../datos/tarjeta.json";
+import inicio from "../datos/inicio.json";
+import sitio from "../datos/sitio.json";
+import { ruta } from "../lib/ruta";
+
+const ui = sitio.interfaz;
+const whatsappBase = `https://wa.me/${sitio.whatsapp}`;
+const whatsappUrl = `${whatsappBase}?text=${encodeURIComponent(t.mensajeGeneral)}`;
+const telefono = `+${sitio.whatsapp}`;
+---
+
+<LayoutTarjeta titulo={t.meta.titulo} descripcion={t.meta.descripcion} imagen={t.perfil.imagen}>
+  <main class="tarjeta" id="contenido">
+    <article class="t-card">
+      <header class="t-cabecera campo-azul">
+        <img class="t-logo" src={ruta("/brand/isologo.png")} alt="" width="48" height="45" />
+        <button class="boton-tema" id="botonTema" type="button" aria-pressed="false" aria-label={ui.temaOscuro} data-claro={ui.temaClaro} data-oscuro={ui.temaOscuro}>
+          <svg class="icono-luna" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a.7.7 0 0 0-.9-.9A10 10 0 1 0 21.4 15.5a.7.7 0 0 0-.9-.9Z"/></svg>
+          <svg class="icono-sol" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></g></svg>
+        </button>
+      </header>
+
+      <section class="t-perfil" aria-labelledby="t-nombre">
+        <figure class="t-foto campo-amarillo">
+          <img src={ruta(t.perfil.imagen)} alt={t.perfil.imagenAlt} width="900" height="852" fetchpriority="high" />
+        </figure>
+        <h1 id="t-nombre">{sitio.nombre}</h1>
+        <p class="t-cargo">{t.perfil.cargo}</p>
+        <p class="t-zona">{t.perfil.zona}</p>
+      </section>
+
+      <div class="t-acciones">
+        <a class="btn btn-amarillo btn-grande t-wa" href={whatsappUrl} target="_blank" rel="noopener">
+          <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M16 3C8.8 3 3 8.7 3 15.800c0 2.500.7 4.800 1.900 6.800L3 29l6.600-1.800a13 13 0 0 0 6.400 1.700c7.200 0 13-5.700 13-12.800S23.200 3 16 3Zm0 23.500c-2 0-3.900-.6-5.500-1.600l-.4-.2-3.900 1 1-3.800-.3-.4A10.500 10.500 0 0 1 5.500 15.800C5.500 10 10.200 5.400 16 5.400s10.500 4.600 10.500 10.400S21.800 26.500 16 26.500Zm5.800-7.800c-.3-.2-1.900-.9-2.200-1-.3-.1-.5-.2-.7.2-.2.300-.8 1-1 1.200-.2.200-.4.200-.7.100a8.600 8.600 0 0 1-4.300-3.700c-.3-.6.3-.5.9-1.700.1-.2 0-.4 0-.5l-1-2.300c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.100-.9.400-.3.300-1.200 1.200-1.200 2.800s1.200 3.300 1.400 3.500c.2.200 2.400 3.700 5.800 5.100 2.100.9 2.900.9 3.900.8.600-.1 1.900-.8 2.200-1.600.3-.8.3-1.400.2-1.600-.1-.2-.3-.3-.6-.4Z"/></svg>
+          {t.acciones.whatsapp}
+        </a>
+        <div class="t-rapidas">
+          <a class="t-accion" href={`tel:${telefono}`}>
+            <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M6.600 10.800a15.100 15.100 0 0 0 6.600 6.600l2.200-2.200a1 1 0 0 1 1-.25 11.400 11.400 0 0 0 3.600.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.500a1 1 0 0 1 1 1c0 1.250.2 2.450.57 3.570a1 1 0 0 1-.25 1Z"/></svg>
+            <span>{t.acciones.llamar}</span>
+          </a>
+          <a class="t-accion" href={ruta(t.acciones.archivoVcf)} download={t.acciones.nombreDescarga}>
+            <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M12 4a4 4 0 1 1 0 8 4 4 0 0 1 0-8Zm0 10c4.400 0 8 1.800 8 4v2H4v-2c0-2.200 3.600-4 8-4Zm7-9h2v2h2v2h-2v2h-2V9h-2V7h2V5Z" transform="translate(-2 0)"/></svg>
+            <span>{t.acciones.guardar}</span>
+          </a>
+          <button class="t-accion" id="compartir" type="button" data-titulo={t.compartir.titulo} data-texto={t.compartir.texto} data-copiado={t.acciones.copiado} data-etiqueta={t.acciones.compartir}>
+            <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M18 16a3 3 0 0 0-2.200 1l-6.900-3.500a3 3 0 0 0 0-1l6.900-3.500A3 3 0 1 0 15 7a3 3 0 0 0 .1.800L8.200 11.300a3 3 0 1 0 0 3.400l6.900 3.500A3 3 0 1 0 18 16Z"/></svg>
+            <span id="compartirEtiqueta">{t.acciones.compartir}</span>
+          </button>
+        </div>
+      </div>
+
+      <section class="t-bloque" aria-labelledby="t-servicios">
+        <h2 id="t-servicios">{t.servicios.titulo}</h2>
+        <p class="t-bajada">{t.servicios.texto}</p>
+        <ul
+          class="tablero t-tablero"
+          id="tablero"
+          data-wa={whatsappBase}
+          data-inicio={t.servicios.mensajeInicio}
+          data-cierre={t.servicios.mensajeCierre}
+          data-uno={t.servicios.barraUno}
+          data-varios={t.servicios.barraVarios}
+        >
+          {inicio.servicios.items.map((item) => (
+            <li>
+              <button type="button" class="breaker" role="switch" aria-checked="false" data-nombre={item.titulo}>
+                <span class="palanca" aria-hidden="true"><span></span></span>
+                <span class="breaker-texto">
+                  <strong>{item.titulo}</strong>
+                  <span>{item.texto}</span>
+                </span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="t-bloque" aria-labelledby="t-sobre">
+        <h2 id="t-sobre">{t.sobreMi.titulo}</h2>
+        <p class="t-texto t-fuerte">{inicio.nosotros.texto}</p>
+        <p class="t-texto">{inicio.nosotros.textoSecundario}</p>
+      </section>
+
+      <section class="t-bloque t-proceso campo-azul" aria-labelledby="t-proceso">
+        <h2 id="t-proceso">{t.proceso.titulo}</h2>
+        <ol class="t-pasos">
+          {inicio.proceso.pasos.map((paso) => (
+            <li><h3>{paso.titulo}</h3><p>{paso.texto}</p></li>
+          ))}
+        </ol>
+      </section>
+
+      <section class="t-bloque" aria-labelledby="t-contacto">
+        <h2 id="t-contacto">{t.contacto.titulo}</h2>
+        <dl class="t-datos">
+          <div><dt>{t.contacto.whatsapp}</dt><dd><a href={whatsappUrl} target="_blank" rel="noopener">{inicio.contacto.telefono}</a></dd></div>
+          <div><dt>{t.contacto.zona}</dt><dd>{t.perfil.zona}</dd></div>
+          <div><dt>{t.contacto.web}</dt><dd><a href={ruta("/")}>{t.contacto.urlWeb}</a></dd></div>
+        </dl>
+        <a class="btn btn-marino" href={ruta("/")}>{t.contacto.boton}</a>
+      </section>
+
+      <section class="t-bloque t-qr" aria-labelledby="t-qr">
+        <img src={ruta(t.qr.imagen)} alt={t.qr.alt} width="160" height="160" loading="lazy" />
+        <div>
+          <h2 id="t-qr">{t.qr.titulo}</h2>
+          <p class="t-bajada">{t.qr.texto}</p>
+        </div>
+      </section>
+
+      <footer class="t-pie">
+        {sitio.creditos && (
+          <p>
+            {t.credito.texto}{" "}
+            {sitio.creditos.url
+              ? <a href={sitio.creditos.url} target="_blank" rel="noopener">{sitio.creditos.nombre}</a>
+              : <strong>{sitio.creditos.nombre}</strong>}
+          </p>
+        )}
+      </footer>
+    </article>
+
+    <div class="t-barra" id="barra" aria-live="polite">
+      <p id="barraTexto"></p>
+      <a class="btn btn-amarillo" id="barraBoton" href={whatsappUrl} target="_blank" rel="noopener">{t.servicios.barraBoton}</a>
+    </div>
+  </main>
+</LayoutTarjeta>
+
+<script is:inline>
+  (function () {
+    /* servicios marcados: arman el mensaje de WhatsApp y muestran la barra de abajo */
+    var tablero = document.getElementById("tablero");
+    var barra = document.getElementById("barra");
+    var texto = document.getElementById("barraTexto");
+    var boton = document.getElementById("barraBoton");
+    if (tablero && barra) {
+      barra.setAttribute("inert", "");
+      tablero.querySelectorAll(".breaker").forEach(function (b) {
+        b.addEventListener("click", function () {
+          var activo = b.getAttribute("aria-checked") === "true";
+          b.setAttribute("aria-checked", String(!activo));
+          if (!activo) { b.classList.remove("chispa"); void b.offsetWidth; b.classList.add("chispa"); }
+          var marcados = Array.prototype.filter.call(tablero.querySelectorAll(".breaker"), function (x) {
+            return x.getAttribute("aria-checked") === "true";
+          });
+          var hay = marcados.length > 0;
+          barra.classList.toggle("visible", hay);
+          if (hay) barra.removeAttribute("inert"); else barra.setAttribute("inert", "");
+          if (!hay) return;
+          texto.textContent = marcados.length === 1 ? tablero.dataset.uno : marcados.length + " " + tablero.dataset.varios;
+          var msg = tablero.dataset.inicio + "\n" +
+            marcados.map(function (x) { return "- " + x.dataset.nombre; }).join("\n") + "\n" +
+            tablero.dataset.cierre;
+          boton.setAttribute("href", tablero.dataset.wa + "?text=" + encodeURIComponent(msg));
+          boton.classList.remove("bump"); void boton.offsetWidth; boton.classList.add("bump");
+        });
+      });
+    }
+
+    /* compartir: menú del celular si existe; si no, copia el enlace */
+    var compartir = document.getElementById("compartir");
+    var etiqueta = document.getElementById("compartirEtiqueta");
+    if (compartir) {
+      compartir.addEventListener("click", function () {
+        var url = location.origin + location.pathname;
+        var datos = { title: compartir.dataset.titulo, text: compartir.dataset.texto, url: url };
+        if (navigator.share) {
+          navigator.share(datos).catch(function () {});
+          return;
+        }
+        var avisar = function () {
+          etiqueta.textContent = compartir.dataset.copiado;
+          setTimeout(function () { etiqueta.textContent = compartir.dataset.etiqueta; }, 2200);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(url).then(avisar).catch(function () {});
+        }
+      });
+    }
+  })();
+</script>

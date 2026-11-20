@@ -16,7 +16,7 @@
     "cobertura": "Atención en Bogotá, Colombia",
     "imagen": "/images/portada/portada-multimetro.jpg",
     "imagenAlt": "Electricista midiendo con un multímetro las conexiones de un tablero eléctrico",
-    "credito": "Imagen ilustrativa · Foto: Bulat843, Pexels"
+    "credito": ""
   },
   "servicios": {
     "titulo": "¿Qué necesitas?",
@@ -92,9 +92,9 @@
   },
   "trabajos": {
     "titulo": "Tipos de trabajo",
-    "texto": "Imágenes ilustrativas del tipo de trabajo que realizo en Bogotá.",
+    "texto": "El tipo de trabajo que realizo en Bogotá.",
     "boton": "Consultar un trabajo similar",
-    "credito": "Imágenes ilustrativas · Fotos: Pexels",
+    "credito": "",
     "grupos": [
       {
         "clase": "galeria-muros",

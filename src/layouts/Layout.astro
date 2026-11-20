@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import "../styles/animaciones.css";
 import fuenteUrl from "../fonts/montserrat-variable.woff2?url";
 import sitio from "../datos/sitio.json";
 import inicio from "../datos/inicio.json";
@@ -31,6 +32,7 @@ const claveTema = sitio.claveTema;
     <link rel="preload" href={fuenteUrl} as="font" type="font/woff2" crossorigin />
     <!-- Tema: siempre claro. Solo se pasa a oscuro si la persona lo activó con el botón. -->
     <script is:inline define:vars={{ claveTema }}>
+      document.documentElement.classList.add("js");
       try {
         if (localStorage.getItem(claveTema) === "oscuro") document.documentElement.dataset.tema = "oscuro";
       } catch (e) {}
@@ -111,6 +113,10 @@ const claveTema = sitio.claveTema;
         </div>
       </div>
     </footer>
+
+    <script>
+      import "../scripts/movimiento.js";
+    </script>
 
     <script is:inline define:vars={{ claveTema }}>
       (function () {

@@ -17,6 +17,8 @@
   --marino-hondo: #061f3c;
   --azul: #087bff;
   --amarillo: #ffc400;
+  --whatsapp: #25d366;
+  --whatsapp-hover: #20bd5a;
 
   /* roles, modo claro */
   --fondo: #ffffff;
@@ -224,7 +226,7 @@ h3 { font-size: var(--t-sub); letter-spacing: -0.02em; line-height: 1.15; }
 .grupo-cabecera { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem 2rem; margin-bottom: 1rem; }
 .grupo-cabecera p { color: var(--tinta-suave); font-weight: 500; }
 .galeria { display: grid; gap: 0.5rem; }
-.galeria img { width: 100%; object-fit: cover; background: var(--superficie); }
+.galeria img { display: block; width: 100%; object-fit: cover; background: var(--superficie); }
 .galeria-muros { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .galeria-muros img { aspect-ratio: 4 / 3; }
 .galeria-altura { grid-template-columns: repeat(4, minmax(0, 1fr)); }
@@ -281,8 +283,8 @@ details[open] .mas::after { transform: rotate(0deg); }
 .pie-credito a { color: #ffffff; font-weight: 800; text-decoration: underline; text-decoration-color: var(--amarillo); text-underline-offset: 0.3em; }
 
 /* ---------- botón flotante de WhatsApp ---------- */
-.flotante { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 60; display: grid; place-items: center; width: 3.5rem; height: 3.5rem; background: var(--amarillo); color: var(--marino); box-shadow: 0 0.5rem 1.5rem rgba(4, 15, 29, 0.35); transition: background-color 0.2s ease; }
-.flotante:hover { background: #ffd24d; }
+.flotante { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 60; display: grid; place-items: center; width: 3.5rem; height: 3.5rem; background: var(--whatsapp); color: #ffffff; box-shadow: 0 0.5rem 1.5rem rgba(4, 15, 29, 0.35); transition: background-color 0.2s ease; }
+.flotante:hover { background: var(--whatsapp-hover); }
 
 /* ---------- 1080 ---------- */
 @media (max-width: 1080px) {
@@ -315,7 +317,7 @@ details[open] .mas::after { transform: rotate(0deg); }
   .servicios-lateral, .faq h2 { position: static; }
   .servicios-grid { gap: 2rem; }
   .galeria-muros { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .galeria-muros img:first-child { grid-column: span 2; }
+  .galeria-muros .foto:first-child { grid-column: span 2; }
   .nosotros-grid { gap: 2rem; }
   .retrato { max-width: 28rem; }
   .pie-columnas { grid-template-columns: 1fr 1fr; }

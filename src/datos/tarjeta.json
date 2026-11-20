@@ -1,0 +1,59 @@
+{
+  "_comentario": "Contenido de la tarjeta de presentación virtual (/tarjeta/). Los servicios y el proceso salen de inicio.json para tener una sola fuente; aquí solo lo propio de la tarjeta.",
+  "meta": {
+    "titulo": "Jhon Jairo Espinosa | Electricista certificado en Bogotá",
+    "descripcion": "Tarjeta de presentación de Jhon Jairo Espinosa, electricista certificado en Bogotá: servicios, contacto por WhatsApp y guardar contacto en tu celular."
+  },
+  "perfil": {
+    "cargo": "Electricista certificado",
+    "zona": "Bogotá, Colombia",
+    "imagen": "/images/retratos/jhon-jairo-uniforme.jpg",
+    "imagenAlt": "Jhon Jairo Espinosa, electricista, con su uniforme azul de trabajo"
+  },
+  "acciones": {
+    "whatsapp": "Escribir por WhatsApp",
+    "llamar": "Llamar",
+    "guardar": "Guardar contacto",
+    "compartir": "Compartir",
+    "copiado": "Enlace copiado",
+    "archivoVcf": "/jhon-jairo-espinosa.vcf",
+    "nombreDescarga": "Jhon-Jairo-Espinosa.vcf"
+  },
+  "compartir": {
+    "titulo": "Jhon Jairo Espinosa · Electricista certificado",
+    "texto": "Electricista certificado en Bogotá. Mira su tarjeta de presentación."
+  },
+  "mensajeGeneral": "Hola Jhon Jairo, vi tu tarjeta de presentación y necesito información sobre tus servicios eléctricos. ¿Podrías ayudarme?",
+  "servicios": {
+    "titulo": "Servicios",
+    "texto": "Marca lo que necesitas y te armo el mensaje para WhatsApp.",
+    "mensajeInicio": "Hola Jhon Jairo, vi tu tarjeta de presentación y necesito información sobre:",
+    "mensajeCierre": "¿Podrías ayudarme?",
+    "barraBoton": "Enviar consulta por WhatsApp",
+    "barraUno": "1 servicio marcado",
+    "barraVarios": "servicios marcados"
+  },
+  "sobreMi": {
+    "titulo": "Sobre mí"
+  },
+  "proceso": {
+    "titulo": "Cómo trabajo"
+  },
+  "contacto": {
+    "titulo": "Contacto",
+    "whatsapp": "WhatsApp",
+    "zona": "Cobertura",
+    "web": "Sitio web",
+    "urlWeb": "electricistascertificadosbogota.com",
+    "boton": "Ver mi página web"
+  },
+  "qr": {
+    "titulo": "Comparte esta tarjeta",
+    "texto": "Escanea el código con la cámara de otro celular para abrirla.",
+    "alt": "Código QR que abre la tarjeta de presentación de Jhon Jairo Espinosa",
+    "imagen": "/qr/qr-tarjeta.svg"
+  },
+  "credito": {
+    "texto": "Tarjeta desarrollada por"
+  }
+}

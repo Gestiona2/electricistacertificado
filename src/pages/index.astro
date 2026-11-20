@@ -25,7 +25,7 @@ const whatsappUrl = `${whatsappBase}?text=${encodeURIComponent(sitio.whatsappMen
     </div>
     <figure class="portada-foto campo-amarillo">
       <img src={ruta(portada.imagen)} alt={portada.imagenAlt} fetchpriority="high" width="1181" height="2100" />
-      <figcaption>{portada.credito}</figcaption>
+      {portada.credito && <figcaption>{portada.credito}</figcaption>}
     </figure>
   </section>
 
@@ -100,12 +100,12 @@ const whatsappUrl = `${whatsappBase}?text=${encodeURIComponent(sitio.whatsappMen
           </div>
           <div class={`galeria ${grupo.clase}`}>
             {grupo.items.map((item) => (
-              <img src={ruta(item.imagen)} alt={item.alt} loading="lazy" width={item.ancho} height={item.alto} />
+              <div class="foto"><img src={ruta(item.imagen)} alt={item.alt} loading="lazy" width={item.ancho} height={item.alto} /></div>
             ))}
           </div>
         </div>
       ))}
-      <p class="credito-galeria">{trabajos.credito}</p>
+      {trabajos.credito && <p class="credito-galeria">{trabajos.credito}</p>}
     </div>
   </section>
 
@@ -189,7 +189,9 @@ const whatsappUrl = `${whatsappBase}?text=${encodeURIComponent(sitio.whatsappMen
         var activo = b.getAttribute("aria-checked") === "true";
         b.setAttribute("aria-checked", String(!activo));
         b.querySelector("[data-estado]").textContent = activo ? tablero.dataset.off : tablero.dataset.on;
+        if (!activo) { b.classList.remove("chispa"); void b.offsetWidth; b.classList.add("chispa"); }
         actualizar();
+        boton.classList.remove("bump"); void boton.offsetWidth; boton.classList.add("bump");
       });
     });
   })();

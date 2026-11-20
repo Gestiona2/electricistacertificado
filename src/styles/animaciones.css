@@ -1,0 +1,74 @@
+/* Movimiento amigable. Solo transform y opacity (salvo el desplegable de preguntas).
+   Todo lo que oculta algo al inicio depende de la clase .js, que pone el script de la cabecera:
+   si el script falla, el contenido se ve igual. Con "reducir movimiento" no se anima nada. */
+
+/* sombra de la cabecera al bajar: una barra que flota */
+.cabecera { transition: box-shadow 0.25s ease; }
+.cabecera.elevada { box-shadow: 0 0.5rem 1.5rem rgba(4, 15, 29, 0.14); }
+
+@media (prefers-reduced-motion: no-preference) {
+  :root { interpolate-size: allow-keywords; }
+
+  @keyframes subir { from { opacity: 0; transform: translateY(1.75rem); } to { opacity: 1; transform: none; } }
+  @keyframes entrar-foto { from { opacity: 0; transform: scale(1.08); } to { opacity: 1; transform: none; } }
+  @keyframes entrar-lado { from { opacity: 0; transform: translateX(-0.75rem); } to { opacity: 1; transform: none; } }
+  @keyframes pop { 0% { opacity: 0; transform: scale(0.4); } 70% { opacity: 1; transform: scale(1.12); } 100% { opacity: 1; transform: none; } }
+  @keyframes destello { 0% { opacity: 0; } 30% { opacity: 0.55; } 100% { opacity: 0; } }
+  @keyframes latido { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+  @keyframes anillo { from { opacity: 0.55; transform: scale(1); } to { opacity: 0; transform: scale(1.7); } }
+
+  /* ---- portada: entra por partes al abrir la página ---- */
+  .portada h1 { animation: subir 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  .portada-firma { animation: subir 0.8s 0.12s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  .portada-bajada { animation: subir 0.8s 0.24s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  .portada .acciones { animation: subir 0.8s 0.36s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  .portada-cobertura { animation: subir 0.8s 0.48s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  .portada-foto { overflow: hidden; }
+  .portada-foto img { animation: entrar-foto 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  .portada-foto figcaption { animation: entrar-lado 0.8s 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+  /* ---- aparecer al bajar (la clase .reveal la agrega el script, solo a lo que está fuera de pantalla) ---- */
+  .js .reveal { opacity: 0; transform: translateY(1.75rem); transition: opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0s), transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0s); }
+  .js .reveal.visto { opacity: 1; transform: none; }
+
+  /* ---- botones: se levantan al pasar y se hunden al pulsar ---- */
+  .btn { transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn:active { transform: none; }
+  .btn.bump { animation: latido 0.35s ease; }
+  .enlace { transition: text-decoration-color 0.2s ease; }
+  .boton-tema svg { transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); }
+  .boton-tema:hover svg { transform: rotate(25deg); }
+  .boton-tema:active svg { transform: rotate(180deg); }
+  body { transition: background-color 0.3s ease, color 0.3s ease; }
+
+  /* ---- tablero: la palanca salta con rebote y la fila destella ---- */
+  .breaker { position: relative; overflow: hidden; transition: background-color 0.25s ease, transform 0.15s ease; }
+  .breaker:active { transform: scale(0.985); }
+  .breaker::after { content: ""; position: absolute; inset: 0; background: #ffffff; opacity: 0; pointer-events: none; }
+  .breaker.chispa::after { animation: destello 0.6s ease-out; }
+  .palanca span { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease; }
+  .breaker:not([aria-checked="true"]):hover .palanca span { transform: translateY(-0.25rem); }
+  .consulta-lista li { animation: entrar-lado 0.35s ease both; }
+
+  /* ---- proceso: la línea amarilla se dibuja y los nodos saltan uno a uno ---- */
+  .js .pasos::before { transform: scaleY(0); transform-origin: top; transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1); }
+  .js .pasos.visto::before { transform: scaleY(1); }
+  .js .pasos li::before { transform: scale(0); transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) var(--d, 0s); }
+  .js .pasos.visto li::before { transform: scale(1); }
+
+  /* ---- galerías: la foto se acerca suave al pasar ---- */
+  .foto { overflow: hidden; }
+  .foto img { transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1); }
+  .foto:hover img { transform: scale(1.05); }
+
+  /* ---- preguntas: se abren con suavidad (Chrome y Edge recientes; el resto abre sin animar) ---- */
+  .faq details::details-content { block-size: 0; overflow: clip; transition: block-size 0.35s ease, content-visibility 0.35s allow-discrete; }
+  .faq details[open]::details-content { block-size: auto; }
+  .faq summary { transition: background-color 0.25s ease; }
+
+  /* ---- botón flotante de WhatsApp: entra con un salto y avisa tres veces ---- */
+  .flotante { animation: pop 0.6s 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+  .flotante::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--whatsapp); animation: anillo 1.6s 4s ease-out 3 both; }
+  .flotante:hover { transform: scale(1.08); }
+}

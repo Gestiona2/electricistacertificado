@@ -37,7 +37,7 @@
 
 /* bloques */
 .t-bloque { padding: 2.75rem 1.5rem 0; }
-.t-bloque h2 { font-size: clamp(1.75rem, 1.2rem + 2.6vw, 2.125rem); }
+.t-bloque h2 { font-size: clamp(1.75rem, 1.2rem + 2.6vw, 2.125rem); overflow-wrap: anywhere; }
 .t-bajada { margin-top: 0.75rem; color: var(--tinta-suave); font-weight: 500; }
 .t-texto { margin-top: 0.875rem; color: var(--tinta-suave); font-weight: 500; }
 .t-texto.t-fuerte { color: var(--tinta); font-weight: 700; }
@@ -64,14 +64,20 @@
 .t-datos { display: grid; gap: 0.75rem; margin: 1.25rem 0 1.5rem; }
 .t-datos div { display: flex; flex-direction: column; padding: 0.875rem 1rem; background: var(--superficie); }
 .t-datos dt { color: var(--tinta-suave); font-size: var(--t-nota); font-weight: 700; }
-.t-datos dd { margin: 0.125rem 0 0; font-size: 1.125rem; font-weight: 800; letter-spacing: -0.015em; }
+.t-datos dd { margin: 0.125rem 0 0; font-size: 1.125rem; font-weight: 800; letter-spacing: -0.015em; overflow-wrap: anywhere; }
+.t-datos div { min-width: 0; }
 .t-datos a { text-decoration: underline; text-decoration-color: var(--amarillo); text-decoration-thickness: 0.18em; text-underline-offset: 0.3em; }
 .t-bloque .btn { width: 100%; }
 
 /* QR para compartir: siempre sobre blanco, para que se lea */
 .t-qr { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 1.25rem; align-items: center; }
 .t-qr img { width: 100%; height: auto; padding: 0.5rem; background: #ffffff; }
-.t-qr h2 { font-size: 1.375rem; }
+.t-qr h2 { font-size: 1.375rem; overflow-wrap: anywhere; }
+.t-qr > div { min-width: 0; }
+@media (max-width: 539px) {
+  .t-qr { grid-template-columns: 1fr; justify-items: start; }
+  .t-qr img { width: min(11rem, 60%); }
+}
 
 .t-pie { padding: 2.5rem 1.5rem 0; color: var(--tinta-suave); font-size: 0.8125rem; }
 .t-pie a { font-weight: 800; color: var(--tinta); text-decoration: underline; text-decoration-color: var(--amarillo); text-underline-offset: 0.3em; }
@@ -79,8 +85,9 @@
 /* barra de abajo: aparece al marcar servicios */
 .t-barra { position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; max-width: 30rem; margin: 0 auto; padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom)); background: var(--fondo); box-shadow: 0 -0.5rem 1.5rem rgba(4, 15, 29, 0.2); transform: translateY(110%); visibility: hidden; transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), visibility 0s 0.4s; }
 .t-barra.visible { transform: none; visibility: visible; transition-delay: 0s; }
-.t-barra p { font-size: 0.875rem; font-weight: 800; line-height: 1.25; }
-.t-barra .btn { min-height: 3rem; padding: 0.625rem 1rem; font-size: 0.9375rem; flex: none; }
+.t-barra { flex-wrap: wrap; }
+.t-barra p { flex: 1 1 7rem; font-size: 0.875rem; font-weight: 800; line-height: 1.25; }
+.t-barra .btn { flex: 1 1 12rem; min-height: 3rem; padding: 0.625rem 1rem; font-size: 0.9375rem; }
 
 /* en pantallas grandes la tarjeta flota centrada sobre el fondo */
 @media (min-width: 600px) {

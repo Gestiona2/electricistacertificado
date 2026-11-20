@@ -3,7 +3,8 @@
 
 .pagina-tarjeta { background: var(--superficie); }
 .tarjeta { max-width: 30rem; margin: 0 auto; min-height: 100svh; background: var(--fondo); }
-.t-card { display: block; padding-bottom: 6rem; }
+.t-card { display: block; padding-bottom: 6rem; min-width: 0; }
+.t-card a, .t-card dd, .t-card p, .t-card h1 { overflow-wrap: anywhere; }
 
 /* cabecera azul con el escudo y el botón de tema */
 .t-cabecera { position: relative; isolation: isolate; display: flex; justify-content: space-between; align-items: flex-start; height: 10.5rem; padding: max(1.25rem, env(safe-area-inset-top)) 1.25rem 0; overflow: hidden; }
@@ -31,7 +32,7 @@
 .btn.t-wa { background: var(--whatsapp); color: var(--marino); }
 .btn.t-wa:hover { background: var(--whatsapp-hover); }
 .t-rapidas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.5rem; }
-.t-accion { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; min-height: 5.25rem; padding: 0.75rem 0.375rem; border: 0; border-radius: 0; background: var(--superficie); color: var(--tinta); font-size: 0.8125rem; font-weight: 800; text-align: center; line-height: 1.2; text-decoration: none; cursor: pointer; }
+.t-accion { min-width: 0; overflow-wrap: anywhere; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; min-height: 5.25rem; padding: 0.75rem 0.375rem; border: 0; border-radius: 0; background: var(--superficie); color: var(--tinta); font-size: 0.8125rem; font-weight: 800; text-align: center; line-height: 1.2; text-decoration: none; cursor: pointer; }
 .t-accion:hover { background: var(--superficie-2); }
 .t-accion svg { flex: none; }
 

@@ -102,8 +102,8 @@ body {
 img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; }
 button { font: inherit; color: inherit; }
-h1, h2, h3 { margin: 0; font-weight: 800; letter-spacing: -0.035em; line-height: 1.05; text-wrap: balance; }
-p { margin: 0; text-wrap: pretty; }
+h1, h2, h3 { margin: 0; font-weight: 800; letter-spacing: -0.035em; line-height: 1.05; text-wrap: balance; overflow-wrap: anywhere; }
+p { margin: 0; text-wrap: pretty; overflow-wrap: break-word; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 :focus-visible { outline: 3px solid var(--foco); outline-offset: 3px; }
 [hidden] { display: none !important; }
@@ -122,12 +122,12 @@ h3 { font-size: var(--t-sub); letter-spacing: -0.02em; line-height: 1.15; }
 /* ---------- botones y enlaces ---------- */
 .btn {
   display: inline-flex; align-items: center; justify-content: center;
-  min-height: 3.25rem; padding: 0.875rem 1.75rem;
+  min-height: 3.25rem; padding: 0.875rem min(1.75rem, 5vw); overflow-wrap: anywhere;
   border: 0; border-radius: 0; cursor: pointer;
   font-weight: 800; font-size: 1rem; letter-spacing: -0.01em; text-align: center; text-decoration: none;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
-.btn-grande { min-height: 3.75rem; padding: 1rem 2.25rem; font-size: 1.0625rem; }
+.btn-grande { min-height: 3.75rem; padding: 1rem min(2.25rem, 6vw); font-size: 1.0625rem; }
 .btn-amarillo { background: var(--amarillo); color: var(--marino); }
 .btn-amarillo:hover { background: #ffd24d; }
 .btn-marino { background: var(--boton-fondo); color: var(--boton-texto); }
@@ -249,7 +249,7 @@ h3 { font-size: var(--t-sub); letter-spacing: -0.02em; line-height: 1.15; }
 .faq h2 { position: sticky; top: calc(var(--cabecera) + 2rem); }
 .faq-lista { display: grid; gap: 0.5rem; }
 .faq details { background: var(--superficie); }
-.faq summary { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 1.5rem; cursor: pointer; font-size: 1.1875rem; font-weight: 800; letter-spacing: -0.015em; line-height: 1.3; list-style: none; }
+.faq summary { overflow-wrap: anywhere; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 1.5rem; cursor: pointer; font-size: 1.1875rem; font-weight: 800; letter-spacing: -0.015em; line-height: 1.3; list-style: none; }
 .faq summary::-webkit-details-marker { display: none; }
 .faq details[open] summary { background: var(--amarillo); color: var(--marino); }
 .faq details p { padding: 1.25rem 1.5rem 1.75rem; color: var(--tinta-suave); font-weight: 500; max-width: 42rem; }
@@ -299,7 +299,10 @@ details[open] .mas::after { transform: rotate(0deg); }
   .boton-menu { display: block; }
   .cabecera-cta { display: none; }
   .cabecera-interior { gap: 0.75rem; }
-  .cabecera-acciones { margin-left: auto; }
+  .cabecera-acciones { margin-left: auto; flex: none; }
+  .marca { flex: 1 1 auto; min-width: 0; }
+  .marca-simbolo { width: 2.5rem; }
+  .marca-texto strong { white-space: normal; font-size: 1rem; }
   .menu { position: absolute; left: 0; right: 0; top: 100%; display: none; flex-direction: column; gap: 0; margin: 0; padding: 0.5rem var(--margen) 1.5rem; background: var(--fondo); box-shadow: 0 1rem 2rem rgba(4, 15, 29, 0.18); font-size: 1.0625rem; }
   .menu.abierto { display: flex; }
   .menu a { padding: 1rem 0; }
@@ -309,18 +312,20 @@ details[open] .mas::after { transform: rotate(0deg); }
 /* ---------- tablet y móvil ---------- */
 @media (max-width: 860px) {
   :root { --cabecera: 4rem; }
-  .portada { grid-template-columns: 1fr; min-height: 0; }
+  .portada { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+  .portada > * { min-width: 0; }
   .portada-texto { padding: 2.5rem var(--margen) 2.75rem; }
-  .portada h1 { max-width: none; }
-  .portada-foto { aspect-ratio: 5 / 4; padding: 0 0 1.5rem 1.5rem; }
-  .servicios-grid, .proceso-grid, .trabajos-cabecera, .nosotros-grid, .faq-grid, .contacto-grid { grid-template-columns: 1fr; }
+  .portada h1 { max-width: none; font-size: min(var(--t-display), 12vw); }
+  .portada-foto { aspect-ratio: auto; height: 80vw; max-height: 34rem; padding: 0 0 1.5rem 1.5rem; }
+  .servicios-grid, .proceso-grid, .trabajos-cabecera, .nosotros-grid, .faq-grid, .contacto-grid { grid-template-columns: minmax(0, 1fr); }
+  .servicios-grid > *, .proceso-grid > *, .trabajos-cabecera > *, .nosotros-grid > *, .faq-grid > *, .contacto-grid > * { min-width: 0; }
   .servicios-lateral, .faq h2 { position: static; }
   .servicios-grid { gap: 2rem; }
   .galeria-muros { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .galeria-muros .foto:first-child { grid-column: span 2; }
   .nosotros-grid { gap: 2rem; }
   .retrato { max-width: 28rem; }
-  .pie-columnas { grid-template-columns: 1fr 1fr; }
+  .pie-columnas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .pie-columnas > div:first-child { grid-column: span 2; }
 }
 
@@ -332,9 +337,9 @@ details[open] .mas::after { transform: rotate(0deg); }
   .breaker[aria-checked="true"] .palanca span { transform: translateY(-0.875rem); }
   .acciones .btn { width: 100%; }
   .consulta .btn, .proceso .btn, .nosotros-texto .btn, .contacto-acciones .btn { width: 100%; }
-  .pasos { padding-left: 3rem; }
-  .pasos li::before { left: -3rem; }
-  .pie-columnas { grid-template-columns: 1fr; }
+  .pasos { padding-left: min(3rem, 12vw); }
+  .pasos li::before { left: calc(-1 * min(3rem, 12vw)); }
+  .pie-columnas { grid-template-columns: minmax(0, 1fr); }
   .pie-columnas > div:first-child { grid-column: auto; }
   .flotante { right: 1rem; bottom: 1rem; width: 3.25rem; height: 3.25rem; }
 }
